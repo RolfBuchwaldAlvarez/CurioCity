@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   gridItem: {
-    paddingTop: "15%",
+    paddingTop: "10%",
   },
   text1: {
     margin: theme.spacing(2),
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: '25ch',
+  },
+  typography: {
+    color: "black",
+    paddingTop: "20%",
   },
 }));
 
@@ -75,6 +80,11 @@ export default function UserLoginSF() {
                 LOGIN
               </Button>
             </Grid>
+          <Grid item >
+            <Typography variant="h6" component="h2" gutterBottom className={classes.typography}>
+              Create New Account
+            </Typography>
+          </Grid>
           </Grid>
     </div>
   );
