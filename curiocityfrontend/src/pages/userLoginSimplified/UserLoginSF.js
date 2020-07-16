@@ -28,15 +28,8 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     paddingTop: "10%",
   },
-  text1: {
+  textPrimary: {
     margin: theme.spacing(2),
-  },
-  button: {
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '25ch',
   },
   typography: {
     color: "black",
@@ -56,13 +49,12 @@ export default function UserLoginSF() {
                 className={classes.gridContainer}>
             <Grid item >
               <TextField
-                label="Dense"
-                id="filled-margin-dense"
-                defaultValue="Default Value"
-                className={classes.textField}
-                helperText="Some important text"
-                margin="dense"
-                variant="filled"
+                error
+                id="outlined-error"
+                label="User ID"
+                defaultValue=" "
+                variant="outlined"
+                className={classes.text1}
               />
             </Grid>
             <Grid item >
@@ -76,7 +68,7 @@ export default function UserLoginSF() {
               />
             </Grid>
             <Grid item className={classes.gridItem}>
-              <Button variant="contained" color="secondary" classname={classes.button}>
+              <Button variant="contained" color="secondary" >
                 LOGIN
               </Button>
             </Grid>
