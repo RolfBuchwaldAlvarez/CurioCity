@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     color: "black",
     paddingTop: "20%",
+    paddingBottom: "5%",
   },
 }));
 
@@ -54,7 +55,7 @@ export default function UserLoginSF() {
                 label="User ID"
                 defaultValue=" "
                 variant="outlined"
-                className={classes.text1}
+                className={classes.textPrimary}
               />
             </Grid>
             <Grid item >
@@ -64,11 +65,11 @@ export default function UserLoginSF() {
                 label="Password"
                 defaultValue=" "
                 variant="outlined"
-                className={classes.text1}
+                className={classes.textPrimary}
               />
             </Grid>
             <Grid item className={classes.gridItem}>
-              <Button variant="contained" color="secondary" >
+              <Button variant="contained" color="secondary" className={classes.button}>
                 LOGIN
               </Button>
             </Grid>
