@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+/*import UserLogin from "./pages/userLoginOriginal/UserLogin";*/
+import UserLoginSF from "./pages/userLoginSimplified/UserLoginSF";
 
 function App() {
   return (
-    <div>
-    </div>
+    /*<UserLogin />*/
+    <UserLoginSF />
   );
 }
 
