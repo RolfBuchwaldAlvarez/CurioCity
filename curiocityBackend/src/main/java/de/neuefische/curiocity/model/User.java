@@ -12,6 +12,7 @@ public class User {
   private String firstName;
   private String lastName;
   private String eMail;
+  private String gender;
   private String yearOfBirth;
   private String countryOfResidence;
   private String postalCode;
