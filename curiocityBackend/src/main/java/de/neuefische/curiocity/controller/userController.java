@@ -14,7 +14,7 @@ public class userController {
       /*List.of(
       new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
       new User("2", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
-  )*/;
+  )*/
 
   @GetMapping
   public List<User> getUsers() {
@@ -27,6 +27,14 @@ public class userController {
     return userList.get(userList.size()-1);
   }
 
-  asf
+  @GetMapping("{id}")
+  public User getUserById(@PathVariable String id) {
+    for (User user : userList) {
+      if(user.getUserId().equals(id)) {
+        return user;
+      }
+    }
+    return null;
+  }
 
 }
