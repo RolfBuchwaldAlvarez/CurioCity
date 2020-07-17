@@ -14,18 +14,17 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class userController {
 
-  public List<User> userList = new ArrayList<>();
-      /*List.of(
+  public List<User> userList = new ArrayList<>(List.of(
       new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
       new User("2", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
-  )*/
+  ));
 
   @GetMapping
   public List<User> getUsers() {
     return userList;
   }
 
-  @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum?
+  @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum? -> s. oben
   public User addUser(@RequestBody User user) {
     if(user.getUserId() == null) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
@@ -49,6 +48,19 @@ public class userController {
         User userToBeRemoved = getUserById(userId);
         userList.remove(userToBeRemoved);
         return userToBeRemoved;
+  }
+
+  @GetMapping("search")
+  public List<User> searchUserByName(String query) {
+    List<User> matchingUser = new ArrayList<>();
+
+    for (User user : userList) {
+      if(user.getFirstName().startsWith(query)) {
+        matchingUser.add(user);
+        return matchingUser;
+      }
+    }
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
   }
 
 }
