@@ -1,7 +1,10 @@
 package de.neuefische.curiocity.controller;
 
 import de.neuefische.curiocity.model.User;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +30,21 @@ public class userController {
     return userList.get(userList.size()-1);
   }
 
-  @GetMapping("{id}")
-  public User getUserById(@PathVariable String id) {
+  @GetMapping("{userId}")
+  public User getUserById(@PathVariable String userId) {
     for (User user : userList) {
-      if(user.getUserId().equals(id)) {
+      if(user.getUserId().equals(userId)) {
         return user;
       }
     }
-    return null;
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
+  }
+
+  @DeleteMapping("{userId}")
+  public User deleteUser(@PathVariable String userId) {
+        User userToBeRemoved = getUserById(userId);
+        userList.remove(userToBeRemoved);
+        return userToBeRemoved;
   }
 
 }
