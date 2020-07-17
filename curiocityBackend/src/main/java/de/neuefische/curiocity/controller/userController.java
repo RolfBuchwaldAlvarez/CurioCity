@@ -3,6 +3,7 @@ package de.neuefische.curiocity.controller;
 import de.neuefische.curiocity.model.User;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -25,9 +26,12 @@ public class userController {
   }
 
   @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum?
-  public User addUser(@RequestBody User user) {
+  public ResponseEntity<User> addUser(@RequestBody User user) {
+    if(user.getUserId() == null) {
+      return ResponseEntity.badRequest().build();
+    }
     userList.add(user);
-    return userList.get(userList.size()-1);
+    return ResponseEntity.ok(userList.get(userList.size()-1));
   }
 
   @GetMapping("{userId}")
