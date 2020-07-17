@@ -26,12 +26,12 @@ public class userController {
   }
 
   @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum?
-  public ResponseEntity<User> addUser(@RequestBody User user) {
+  public User addUser(@RequestBody User user) {
     if(user.getUserId() == null) {
-      return ResponseEntity.badRequest().build();
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
     }
     userList.add(user);
-    return ResponseEntity.ok(userList.get(userList.size()-1));
+    return userList.get(userList.size()-1);
   }
 
   @GetMapping("{userId}")
