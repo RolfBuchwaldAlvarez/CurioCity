@@ -17,8 +17,8 @@ public class UserService {
 
   public List<User> userList = new ArrayList<>(List.of(
       new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
-      new User("f1", "Rene", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
-      new User("2", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
+      new User("2", "Rene", "Koch", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
+      new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
   public User addUser(User user) {
@@ -46,6 +46,21 @@ public class UserService {
     }
     return matchingUser;
     /*throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");*/
+  }
+
+  public User getUserById(String userId) {
+    for (User user : userList) {
+      if(user.getUserId().equals(userId)) {
+        return user;
+      }
+    }
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
+  }
+
+  public User deleteUser(String userId) {
+    User userToBeRemoved = getUserById(userId);
+    userList.remove(userToBeRemoved);
+    return userToBeRemoved;
   }
 
 }

@@ -35,19 +35,12 @@ public class UserController {
 
   @GetMapping("{userId}")
   public User getUserById(@PathVariable String userId) {
-    for (User user : userList) {
-      if(user.getUserId().equals(userId)) {
-        return user;
-      }
-    }
-    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
+    return userService.getUserById(userId);
   }
 
   @DeleteMapping("{userId}")
   public User deleteUser(@PathVariable String userId) {
-        User userToBeRemoved = getUserById(userId);
-        userList.remove(userToBeRemoved);
-        return userToBeRemoved;
+        return userService.deleteUser(userId);
   }
 
 }
