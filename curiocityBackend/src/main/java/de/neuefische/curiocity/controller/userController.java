@@ -1,9 +1,7 @@
 package de.neuefische.curiocity.controller;
 
 import de.neuefische.curiocity.model.User;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,12 +14,29 @@ public class userController {
 
   public List<User> userList = new ArrayList<>(List.of(
       new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
+      new User("f1", "Rene", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
       new User("2", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
   @GetMapping
-  public List<User> getUsers() {
-    return userList;
+  // Wenn required = true, dann muss ein Parameter in der URI angegeben werden!
+  public List<User> getUsers(@RequestParam(name="q", required = false) String query) {
+
+    if (query == null) {
+      return userList;
+    }
+
+    List<User> matchingUser = new ArrayList<>();
+
+    for (User user : userList) {
+      if(user.getFirstName().toLowerCase().startsWith(query.toLowerCase())) {
+        matchingUser.add(user);
+      } else if (user.getUserId().toLowerCase().startsWith(query.toLowerCase())) {
+        matchingUser.add(user);
+      }
+    }
+    return matchingUser;
+    /*throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");*/
   }
 
   @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum? -> s. oben
@@ -48,19 +63,6 @@ public class userController {
         User userToBeRemoved = getUserById(userId);
         userList.remove(userToBeRemoved);
         return userToBeRemoved;
-  }
-
-  @GetMapping("search")
-  public List<User> searchUserByName(String query) {
-    List<User> matchingUser = new ArrayList<>();
-
-    for (User user : userList) {
-      if(user.getFirstName().startsWith(query)) {
-        matchingUser.add(user);
-        return matchingUser;
-      }
-    }
-    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
   }
 
 }
