@@ -18,7 +18,7 @@ public class UserDb {
   ));
 
   public User addUser(User user) {
-    if (user.getUserId() == null) {
+    if (user.getUserId().equals("")) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
     }
     userList.add(user);
@@ -47,6 +47,8 @@ public class UserDb {
     for (User user : userList) {
       if (user.getUserId().equals(userId)) {
         return Optional.of(user);
+      } else {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
       }
     }
     return Optional.empty();
