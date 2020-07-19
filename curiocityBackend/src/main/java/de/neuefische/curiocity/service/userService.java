@@ -22,8 +22,8 @@ public class UserService {
     return userDb.addUser(user);
   }
 
-  public List<User> getUsers(String query) {
-    return userDb.getUser(query);
+  public List<User> getUserByQuery(String query) {
+    return userDb.getUserByQuery(query);
   }
 
   public Optional<User> getUserById(String userId) {
