@@ -22,8 +22,8 @@ public class UserController {
 
   @GetMapping
   // Wenn required = true, dann muss ein Parameter in der URI angegeben werden!
-  public List<User> getUserByQuery(@RequestParam(name = "q", required = false) String query) {
-    return userService.getUserByQuery(query);
+  public List<User> getUser(@RequestParam(name = "q", required = false) String query) {
+    return userService.getUser(query);
   }
 
   @PutMapping // Funzt mit List = List.of( new User...); nicht. Warum? -> s. oben (gelöst)

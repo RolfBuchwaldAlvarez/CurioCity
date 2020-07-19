@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public class UserDb {
   public List<User> userList = new ArrayList<>(List.of(
-      new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
-      new User("2", "Rene", "Koch", "abc@eMail.de", "male", "1983", "Germany", "50667", "123"),
+      new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "23456", "123"),
+      new User("2", "Rene", "Koch", "cde@eMail.de", "male", "1987", "Netherlands", "34567", "345"),
       new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
@@ -25,7 +25,7 @@ public class UserDb {
     return userList.get(userList.size() - 1);
   }
 
-  public List<User> getUserByQuery(String query) {
+  public List<User> getUser(String query) {
     if (query == null) {
       return userList;
     } else {
