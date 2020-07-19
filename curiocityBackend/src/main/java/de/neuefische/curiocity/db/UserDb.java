@@ -55,10 +55,10 @@ public class UserDb {
 
   public User deleteUser(String userId) {
     Optional<User> userOptional = getUserById(userId);
-    if (userOptional.isPresent()) {
-      userList.remove(userOptional.get());
-    } else {
+    if (userOptional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
+    } else {
+      userList.remove(userOptional.get());
     }
     return userOptional.get();
   }
