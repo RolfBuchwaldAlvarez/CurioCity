@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserDb {
@@ -16,12 +17,13 @@ public class UserDb {
       new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
-  public User addUser(User user) {
-    if(user.getUserId() == null) {
+  public Optional<User> addUser(User user) {
+
+    if (userOptional.) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
     }
     userList.add(user);
-    return userList.get(userList.size()-1);
+    return userList.get(userList.size() - 1);
   }
 
   public List<User> getUser(String query) {
@@ -32,7 +34,7 @@ public class UserDb {
     List<User> matchingUser = new ArrayList<>();
 
     for (User user : userList) {
-      if(user.getFirstName().toLowerCase().startsWith(query.toLowerCase())) {
+      if (user.getFirstName().toLowerCase().startsWith(query.toLowerCase())) {
         matchingUser.add(user);
       } else if (user.getUserId().toLowerCase().startsWith(query.toLowerCase())) {
         matchingUser.add(user);
@@ -42,19 +44,23 @@ public class UserDb {
     /*throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");*/
   }
 
-  public User getUserById(String userId) {
+  public Optional<User> getUserById(String userId) {
     for (User user : userList) {
-      if(user.getUserId().equals(userId)) {
-        return user;
+      if (user.getUserId().equals(userId)) {
+        return Optional.of(user);
       }
     }
-    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Student does not exist");
+    return Optional.empty();
   }
 
   public User deleteUser(String userId) {
-    User userToBeRemoved = getUserById(userId);
-    userList.remove(userToBeRemoved);
-    return userToBeRemoved;
+    Optional<User> userOptional = getUserById(userId);
+    if (userOptional.isPresent()) {
+      userList.remove(userOptional.get());
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
+    }
+    return userOptional.get();
   }
 
 }

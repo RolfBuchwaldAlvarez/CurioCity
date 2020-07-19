@@ -3,12 +3,10 @@ package de.neuefische.curiocity.service;
 import de.neuefische.curiocity.db.UserDb;
 import de.neuefische.curiocity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service // Clears Problem that different objects of same class might be created in controller classes
 public class UserService {
@@ -26,14 +24,14 @@ public class UserService {
 
   public List<User> getUsers(String query) {
     return userDb.getUser(query);
-      }
+  }
 
-  public User getUserById(String userId) {
+  public Optional<User> getUserById(String userId) {
     return userDb.getUserById(userId);
   }
 
-  public User deleteUser(String userId) {
-    return userDb.deleteUser(userId);
+  public Optional<User> deleteUser(String userId) {
+    return Optional.of(userDb.deleteUser(userId));
   }
 
 }
