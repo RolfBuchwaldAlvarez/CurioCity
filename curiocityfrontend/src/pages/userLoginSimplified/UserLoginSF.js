@@ -4,6 +4,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -20,27 +21,24 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     backgroundColor: "white",
-    opacity: "60%",
+    opacity: "0%",
     height: "50%",
     padding: 0,
     margin: 0,
   },
+  card: {
+    opacity: "100%",
+  },
   gridItem: {
     paddingTop: "10%",
   },
-  text1: {
+  textPrimary: {
     margin: theme.spacing(2),
-  },
-  button: {
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '25ch',
   },
   typography: {
     color: "black",
     paddingTop: "20%",
+    paddingBottom: "5%",
   },
 }));
 
@@ -49,43 +47,44 @@ export default function UserLoginSF() {
 
   return (
     <div className={classes.container}>
-          <Grid container
-                direction="column"
-                justify="center"
-                alignItems="center"
-                className={classes.gridContainer}>
-            <Grid item >
-              <TextField
-                label="Dense"
-                id="filled-margin-dense"
-                defaultValue="Default Value"
-                className={classes.textField}
-                helperText="Some important text"
-                margin="dense"
-                variant="filled"
-              />
-            </Grid>
-            <Grid item >
-              <TextField
-                error
-                id="outlined-error"
-                label="Password"
-                defaultValue=" "
-                variant="outlined"
-                className={classes.text1}
-              />
-            </Grid>
-            <Grid item className={classes.gridItem}>
-              <Button variant="contained" color="secondary" classname={classes.button}>
-                LOGIN
-              </Button>
-            </Grid>
-          <Grid item >
+      <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            className={classes.gridContainer}>
+        <Card className={classes.card}>
+          <Grid item>
+            <TextField
+              error
+              id="outlined-error"
+              label="User ID"
+              defaultValue=" "
+              variant="outlined"
+              className={classes.textPrimary}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              error
+              id="outlined-error"
+              label="Password"
+              defaultValue=" "
+              variant="outlined"
+              className={classes.textPrimary}
+            />
+          </Grid>
+          <Grid item className={classes.gridItem}>
+            <Button variant="contained" color="secondary" className={classes.button}>
+              LOGIN
+            </Button>
+          </Grid>
+          <Grid item>
             <Typography variant="h6" component="h2" gutterBottom className={classes.typography}>
               Create New Account
             </Typography>
           </Grid>
-          </Grid>
+        </Card>
+      </Grid>
     </div>
   );
 }
