@@ -24,7 +24,7 @@ class userControllerTest {
 
   @Test
   public void getUserShouldReturnAllUsers() {
-    //Given
+    //GET
     String url = "http://localhost:" + port + "/api/users";
 
     //When
@@ -42,7 +42,7 @@ class userControllerTest {
 
   @Test
   public void getUserWithQueryEqualToOneShouldReturnUserWithIdOne() {
-    //Given
+    //GET
     String url = "http://localhost:" + port + "/api/users?q=1";
 
     //When
@@ -58,7 +58,7 @@ class userControllerTest {
 
   @Test
   public void getUserWithQueryEqualToTwoShouldReturnUserWithIdTwo() {
-    //Given
+    //GET
     String url = "http://localhost:" + port + "/api/users?q=2";
 
     //When
@@ -74,7 +74,7 @@ class userControllerTest {
 
   @Test
   public void getUserByLeavingQueryEmptyShouldReturnAllUsers() {
-    //Given
+    //GET
     String url = "http://localhost:" + port + "/api/users?q=";
 
     //When
@@ -113,5 +113,24 @@ class userControllerTest {
     assertEquals(users[2], new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234"));
     assertEquals(users[3], new User("4", "Robbi", "Cobain", "def@eMail.de", "male", "2014", "Greece", "45678", "456"));
   }
+
+  // How to test with Optionals ???
+
+ /* @Test
+  public void getUserByIdShouldReturnUserThatBelongsToGivenId() {
+    //GET
+    String url = "http://localhost:" + port + "/api/users/1";
+
+    //When
+    ResponseEntity<User[]> response = restTemplate.getForEntity(url, User[].class);
+    HttpStatus statusCode = response.getStatusCode();
+    User[] users = response.getBody();
+
+    //Then
+    assertEquals(statusCode, HttpStatus.OK);
+    assert users != null;
+    assertEquals(users[0], new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "23456", "123"));
+
+  }*/
 
 }
