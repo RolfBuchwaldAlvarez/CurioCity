@@ -47,21 +47,17 @@ public class UserDb {
     for (User user : userList) {
       if (user.getUserId().equals(userId)) {
         return Optional.of(user);
-      } else {
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
       }
     }
     return Optional.empty();
   }
 
-  public User deleteUser(String userId) {
+  public boolean deleteUser(String userId) {
     Optional<User> userOptional = getUserById(userId);
     if (userOptional.isEmpty()) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
-    } else {
-      userList.remove(userOptional.get());
+      return false;
     }
-    return userOptional.get();
+    return userList.remove(userOptional.get());
   }
 
 }

@@ -30,8 +30,8 @@ public class UserService {
     return userDb.getUserById(userId);
   }
 
-  public Optional<User> deleteUser(String userId) {
-    return Optional.of(userDb.deleteUser(userId));
+  public boolean deleteUser(String userId) {
+    return userDb.deleteUser(userId);
   }
 
 }

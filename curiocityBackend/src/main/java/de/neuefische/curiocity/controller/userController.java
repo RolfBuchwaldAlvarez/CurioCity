@@ -3,7 +3,9 @@ package de.neuefische.curiocity.controller;
 import de.neuefische.curiocity.model.User;
 import de.neuefische.curiocity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,13 +34,20 @@ public class UserController {
   }
 
   @GetMapping("{userId}")
-  public Optional<User> getUserById(@PathVariable String userId) {
-    return userService.getUserById(userId);
+  public User getUserById(@PathVariable String userId) {
+
+    Optional<User> userById = userService.getUserById(userId);
+    if (userById.isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    }
+    return userById.get();
   }
 
   @DeleteMapping("{userId}")
-  public Optional<User> deleteUser(@PathVariable String userId) {
-    return userService.deleteUser(userId);
+  public void deleteUser(@PathVariable String userId) {
+    if (!userService.deleteUser(userId)) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found");
+    }
   }
 
 }

@@ -116,21 +116,33 @@ class userControllerTest {
 
   // How to test with Optionals ???
 
- /* @Test
+  @Test
   public void getUserByIdShouldReturnUserThatBelongsToGivenId() {
     //GET
     String url = "http://localhost:" + port + "/api/users/1";
 
     //When
-    ResponseEntity<User[]> response = restTemplate.getForEntity(url, User[].class);
+    ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
     HttpStatus statusCode = response.getStatusCode();
-    User[] users = response.getBody();
+    User user = response.getBody();
 
     //Then
     assertEquals(statusCode, HttpStatus.OK);
-    assert users != null;
-    assertEquals(users[0], new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "23456", "123"));
+    assertEquals(user, new User("1", "Rolf", "Buchwald", "abc@eMail.de", "male", "1983", "Germany", "23456", "123"));
 
-  }*/
+  }
+
+  @Test
+  public void getUserByIdShouldReturnNotFoundWhenUserNotExists() {
+    //GET
+    String url = "http://localhost:" + port + "/api/users/8";
+
+    //When
+    ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
+    HttpStatus statusCode = response.getStatusCode();
+
+    //Then
+    assertEquals(statusCode, HttpStatus.NOT_FOUND);
+  }
 
 }
