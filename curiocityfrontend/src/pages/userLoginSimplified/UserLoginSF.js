@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     backgroundColor: "white",
-    opacity: "0%",
+    opacity: "100%",
     height: "50%",
     padding: 0,
     margin: 0,
   },
   card: {
-    opacity: "100%",
+    opacity: "60%",
   },
   gridItem: {
     paddingTop: "10%",
