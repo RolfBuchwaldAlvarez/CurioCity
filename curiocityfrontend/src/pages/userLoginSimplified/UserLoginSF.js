@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   card: {
-    opacity: "60%",
+    opacity: 50 % ",
   },
   gridItem: {
     paddingTop: "10%",
