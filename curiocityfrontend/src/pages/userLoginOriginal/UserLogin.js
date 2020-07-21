@@ -26,8 +26,8 @@ export default function UserLogin() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} maxWidth="xl" disableGutters={true}>
-      <Grid justify={"flex-end"} className={classes.gridItem}>
+    <Container className={classes.container} justify={"flex-end"} maxWidth="xl" disableGutters={true}>
+      <Grid className={classes.gridItem}>
         <LogInSection/>
       </Grid>
     </Container>
