@@ -23,23 +23,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   wrapperBox: {
-    /*backgroundImage: "url(/images/LoginSectionBackground.png)",
-    backgroundPosition: "center", /!* Center the image *!/
-    backgroundRepeat: "no-repeat", /!* Do not repeat the image *!/
-    backgroundSize: "cover", /!* Resize the background image to cover the entire container *!/*/
     backgroundColor: "rgba(32,65,90,0.6)",
     width: "100%",
     height: "50%",
-  },
-  grid: {
-    height: "100%",
-    paddingTop: "10%",
-    paddingBottom: "10%",
-  },
-  gridItem: {
-    padding: 0,
-    minWidth: "100%",
-    height: "15%",
   },
   textPrimary: {
     width: "300px",
