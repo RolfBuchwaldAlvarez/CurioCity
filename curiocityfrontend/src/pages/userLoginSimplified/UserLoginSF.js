@@ -1,44 +1,48 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
+
   container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    height: "100vh",
+    height: "100%",
     width: "100%",
     backgroundImage: "url(/images/LoginBGDouble.png)",
     backgroundPosition: "center", /* Center the image */
     backgroundRepeat: "no-repeat", /* Do not repeat the image */
     backgroundSize: "cover", /* Resize the background image to cover the entire container */
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
   },
-  gridContainer: {
-    backgroundColor: "white",
-    opacity: "100%",
+  layerInBetweenBox: {
+    backgroundColor: "rgba(91,48,48,0.3)",
+    height: "100%",
+    width: "100%",
+  },
+  wrapperBox: {
+    backgroundColor: "rgba(32,65,90,0.6)",
+    width: "100%",
     height: "50%",
-    padding: 0,
-    margin: 0,
-  },
-  card: {
-    opacity: 50 % ",
-  },
-  gridItem: {
-    paddingTop: "10%",
   },
   textPrimary: {
+    width: "300px",
     margin: theme.spacing(2),
+    backgroundColor: "rgba(255,255,255,0.1)",
+    borderRadius: "4px",
   },
-  typography: {
-    color: "black",
-    paddingTop: "20%",
-    paddingBottom: "5%",
+  button: {
+    margin: theme.spacing(4),
+    width: "100px",
+
+  },
+  button2: {
+    fontSize: "18px",
+    marginTop: theme.spacing(2),
+    color: "white",
+    backgroundColor: "rgba(255,255,255,0)",
   },
 }));
 
@@ -46,46 +50,39 @@ export default function UserLoginSF() {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
-      <Grid container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            className={classes.gridContainer}>
-        <Card className={classes.card}>
-          <Grid item>
+    <>
+      <Box /*display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center"*/
+        className={classes.container}>
+        <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center"
+             className={classes.layerInBetweenBox}>
+          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
+               className={classes.wrapperBox}>
             <TextField
               error
               id="outlined-error"
               label="User ID"
-              defaultValue=" "
+              defaultValue=""
               variant="outlined"
               className={classes.textPrimary}
             />
-          </Grid>
-          <Grid item>
             <TextField
               error
               id="outlined-error"
               label="Password"
-              defaultValue=" "
+              defaultValue=""
               variant="outlined"
               className={classes.textPrimary}
             />
-          </Grid>
-          <Grid item className={classes.gridItem}>
             <Button variant="contained" color="secondary" className={classes.button}>
               LOGIN
             </Button>
-          </Grid>
-          <Grid item>
-            <Typography variant="h6" component="h2" gutterBottom className={classes.typography}>
+            <Button className={classes.button2}>
               Create New Account
-            </Typography>
-          </Grid>
-        </Card>
-      </Grid>
-    </div>
+            </Button>
+          </Box>
+        </Box>
+      </Box>
+    </>
   );
 }
 
