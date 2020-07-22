@@ -17,6 +17,10 @@ public class UserDb {
       new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
+  public List<User> getUsers() {
+    return userList;
+  }
+
   public void clearDb() {
     userList.clear();
   }
