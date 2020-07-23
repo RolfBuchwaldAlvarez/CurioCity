@@ -17,6 +17,14 @@ public class UserDb {
       new User("3", "Nikita", "Thomson", "bcd@eMail.de", "female", "2002", "Japan", "12345", "234")
   ));
 
+  public List<User> getUsers() {
+    return userList;
+  }
+
+  public void clearDb() {
+    userList.clear();
+  }
+
   public User addUser(User user) {
     if (user.getUserId().equals("")) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
