@@ -3,11 +3,7 @@
 
 name: CurioCitY
 
-on:
-  push:
-    branches: [ master, buildUserLogin ]
-  pull_request:
-    branches: [ master, buildUserLogin ]
+on: push
 
 jobs:
   build:
@@ -21,4 +17,4 @@ jobs:
       with:
         java-version: 14
     - name: Build with Maven
-      run: mvn -B package --file pom.xml 
+      run: mvn -B package --file ./curiocitybackend/pom.xml
