@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -76,9 +77,11 @@ export default function UserLoginSF() {
             <Button variant="contained" color="secondary" className={classes.button}>
               LOGIN
             </Button>
-            <Button className={classes.button2}>
-              Create New Account
-            </Button>
+            <Link to="/createAccount">
+              <Button className={classes.button2}>
+                Create New Account
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Box>
