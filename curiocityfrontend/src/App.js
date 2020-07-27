@@ -1,10 +1,11 @@
 import React from 'react';
-import UserLoginSF from "./pages/userLoginSimplified/UserLoginSF";
+import CreateAccount from "./pages/createAccount/CreateAccount";
+
 
 function App() {
   return (
-    <UserLoginSF/>
-    /*<CreateAccount/>*/
+    /*<UserLoginSF/>*/
+    <CreateAccount/>
   );
 }
 
