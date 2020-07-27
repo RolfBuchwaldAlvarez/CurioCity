@@ -8,7 +8,10 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const useStyles = makeStyles({
   root: {
-    width: 500,
+    width: "100%",
+    marginTop: "100%",
+    marginBottom: 0,
+    backgroundColor: "rgba(94,114,141,0.8)",
   },
 });
 
@@ -26,9 +29,9 @@ export default function MainPageBottomNavigation() {
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+        <BottomNavigationAction label="Recents" icon={<RestoreIcon/>} style={{color: '#FFFFFF'}}/>
+        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>} style={{color: '#FFFFFF'}}/>
+        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>} style={{color: '#FFFFFF'}}/>
       </BottomNavigation>
     </>
   );

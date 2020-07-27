@@ -3,21 +3,20 @@ import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Box from "@material-ui/core/Box";
+import MainPageAppDrawerLeft from "./MainPageAppDrawerLeft";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     width: "100%",
-    height: "100%",
+
   },
   appBar: {
-    width: "100%",
+    width: "100vw",
+    backgroundColor: "rgba(94,114,141,0.8)",
   },
   wrapperBox: {
     width: "100%",
-    height: "100%",
   },
   box1: {
     width: "50%",
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     padding: theme.spacing(1),
+    width: "50%",
   },
 }));
 
@@ -37,23 +37,23 @@ export default function MainPageHeader() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar disableGutters={true}>
           <Box className={classes.wrapperBox} display="flex" flexDirection="row">
             <Box className={classes.box1} display="flex" flexDirection="row" justifyContent="flex-start"
                  alignItems="center">
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon/>
+                <MainPageAppDrawerLeft/>
               </IconButton>
             </Box>
-            <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="flex-end"
+            <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="center"
                  alignItems="center">
               <img className={classes.image} src="/images/curiocityLogo.png" alt="curiocity"/>
             </Box>
           </Box>
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 }
