@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
   },
   drawerPaper: {
     height: "100%",
-    backgroundColor: "rgba(94,114,141,0.4)",
+    backgroundColor: "rgba(94,114,141,0.8)",
   },
 }));
 
