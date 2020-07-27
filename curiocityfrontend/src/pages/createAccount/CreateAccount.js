@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -69,9 +70,11 @@ export default function CreateAccount() {
               <TextField rid="standard-basic" label="Postal Code" className={classes.textfield}/>
               <TextField rid="standard-basic" label="Password" className={classes.textfield}/>
             </Box>
-            <Button variant="contained" color="secondary" className={classes.button}>
-              CONFIRM
-            </Button>
+            <Link to="/login">
+              <Button variant="contained" color="secondary" className={classes.button}>
+                CONFIRM
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Box>
