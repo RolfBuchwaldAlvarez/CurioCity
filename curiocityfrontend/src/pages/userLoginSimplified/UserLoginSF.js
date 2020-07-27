@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -49,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
 export default function UserLoginSF() {
   const classes = useStyles();
 
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/createAccount");
+  }
+
   return (
     <>
       <Box /*display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center"*/
@@ -76,7 +83,7 @@ export default function UserLoginSF() {
             <Button variant="contained" color="secondary" className={classes.button}>
               LOGIN
             </Button>
-            <Button className={classes.button2}>
+            <Button className={classes.button2} onClick={handleClick}>
               Create New Account
             </Button>
           </Box>
