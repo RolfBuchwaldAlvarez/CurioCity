@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="278px" height="78px" viewBox="0 0 278 78" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Logo - CurioCity</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-11---1stTime---CreateProfile-Copy-3" transform="translate(-59.000000, -115.000000)">
+            <g id="Logo---CurioCity" transform="translate(59.000000, 102.000000)">
+                <rect id="Rectangle" fill="#12252B" x="0" y="22" width="158" height="69" rx="5"></rect>
+                <text id="urio" font-family="BalooBhaina2-Bold, Baloo Bhaina 2" font-size="60" font-weight="bold"
+                      fill="#FFFFFF">
+                    <tspan x="45" y="71">urio</tspan>
+                </text>
+                <text id="it" font-family="BalooBhaina2-Bold, Baloo Bhaina 2" font-size="60" font-weight="bold"
+                      fill="#FFFFFF">
+                    <tspan x="202" y="71">it</tspan>
+                </text>
+                <path d="M29,38 C35.1335651,38 40.751231,40.1646506 45.1009447,43.75694 L35.5668667,53.2010255 C33.7029505,51.934478 31.4399156,51.1923077 29,51.1923077 C22.6274837,51.1923077 17.4615385,56.254934 17.4615385,62.5 C17.4615385,68.745066 22.6274837,73.8076923 29,73.8076923 C31.3407667,73.8076923 33.5187361,73.1246144 35.3376769,71.9507653 L44.8915933,81.4140628 C40.5716801,84.9039329 35.0356169,87 29,87 C15.1928813,87 4,76.0309764 4,62.5 C4,48.9690236 15.1928813,38 29,38 Z"
+                      id="Combined-Shape-Copy" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M186,38 C192.119428,38 197.725332,40.1546837 202.070848,43.7321237 L192.533797,53.1786375 C190.676211,51.9257365 188.425504,51.1923077 186,51.1923077 C179.627484,51.1923077 174.461538,56.254934 174.461538,62.5 C174.461538,68.745066 179.627484,73.8076923 186,73.8076923 C188.327033,73.8076923 190.493173,73.1326065 192.305623,71.9713763 L201.861628,81.4382328 C197.546093,84.9136085 192.02167,87 186,87 C172.192881,87 161,76.0309764 161,62.5 C161,48.9690236 172.192881,38 186,38 Z"
+                      id="Combined-Shape-Copy-2" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M278,13.2001902 L260.504,41.8201902 L260.504673,71.018787 L247.495327,71.018787 L247.495,41.8211902 L230,13.2001902 L242.6,13.2 L254,32.2001902 L265.4,13.2 L278,13.2001902 Z"
+                      id="Combined-Shape-Copy" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

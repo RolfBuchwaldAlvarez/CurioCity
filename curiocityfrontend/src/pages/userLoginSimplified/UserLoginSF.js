@@ -74,9 +74,11 @@ export default function UserLoginSF() {
               variant="outlined"
               className={classes.textPrimary}
             />
-            <Button variant="contained" color="secondary" className={classes.button}>
-              LOGIN
-            </Button>
+            <Link to="/main">
+              <Button variant="contained" color="secondary" className={classes.button}>
+                LOGIN
+              </Button>
+            </Link>
             <Link to="/createAccount">
               <Button className={classes.button2}>
                 Create New Account
