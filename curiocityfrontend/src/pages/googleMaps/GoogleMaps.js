@@ -1,7 +1,12 @@
 import React from "react";
+import "./googleMaps.css";
 import {GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
 import MapStyles from "../../utils/MapStyles";
 import {formatRelative} from "date-fns";
+
+import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
+import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
+import "@reach/combobox/styles.css";
 
 const libraries = ["places"]
 const mapContainerStyle = {
@@ -44,6 +49,11 @@ export default function GoogleMaps() {
     mapRef.current = map; //to avoid re-renders
   }, []);
 
+  const panTo = React.useCallback(({lat, lng}) => {
+    mapRef.current.panTo({lat, lng});
+    mapRef.current.setZoom(14);
+  }, []);
+
   if (loadError) {
     return "Error loading maps"
   }
@@ -53,6 +63,8 @@ export default function GoogleMaps() {
 
   return (
     <div>
+      <Search panTo={panTo}/>
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={14}
@@ -92,6 +104,77 @@ export default function GoogleMaps() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
+    </div>
+  );
+}
+
+function Locate({panTo}) {
+  return (
+    <button
+      className="locate"
+      onClick={() => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            panTo({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          () => null,
+        );
+      }}
+    >
+      <img src="my_location_24px.svg" alt="some text"/>
+    </button>
+  );
+}
+
+function Search({panTo}) {
+  const {
+    ready,
+    value,
+    suggestions: {status, data},
+    setValue,
+    clearSuggestion,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: {lat: () => 50.937531, lng: () => 6.960279},
+      radius: 200 * 1000,
+    },
+  });
+
+  return (
+    <div className="search">
+      <Combobox
+        onSelect={async (address) => {
+          setValue(address, false);
+          clearSuggestion();
+          try {
+            const results = await getGeocode({address});
+            const {lat, lng} = await getLatLng(results[0]);
+            panTo({lat, lng});
+          } catch (error) {
+            console.log("error!");
+          }
+        }}
+      >
+        <ComboboxInput
+          value={value}
+          onChange={(event) => {
+            setValue(event.target.value);
+          }}
+          disabled={!ready}
+          placeholder="Enter an address"
+        />
+        <ComboboxPopover>
+          <ComboboxList>
+            {status === "OK" &&
+            data.map(({id, description}) => (
+              <ComboboxOption key={id} value={description}/>
+            ))}
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
     </div>
   );
 }
