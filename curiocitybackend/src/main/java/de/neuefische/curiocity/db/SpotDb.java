@@ -23,4 +23,12 @@ public class SpotDb {
     }
   }
 
+  public Spot addSpot(Spot spot) {
+    if (spot.getSpotID().equals("")) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot-ID not set");
+    }
+    spotList.add(spot);
+    return spotList.get(spotList.size() - 1);
+  }
+
 }

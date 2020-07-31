@@ -21,4 +21,8 @@ public class SpotService {
     return spotDb.getSpots();
   }
 
+  public Spot addSpot(Spot spot) {
+    return spotDb.addSpot(spot);
+  }
+
 }

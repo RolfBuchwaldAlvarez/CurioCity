@@ -3,9 +3,7 @@ package de.neuefische.curiocity.controller;
 import de.neuefische.curiocity.model.Spot;
 import de.neuefische.curiocity.service.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,11 @@ public class SpotController {
   @GetMapping
   public List<Spot> getSpots() {
     return spotService.getSpots();
+  }
+
+  @PutMapping
+  public Spot addSpot(@RequestBody Spot spot) {
+    return spotService.addSpot(spot);
   }
 
 }
