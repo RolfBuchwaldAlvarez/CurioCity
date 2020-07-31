@@ -64,6 +64,7 @@ export default function GoogleMaps() {
   return (
     <div>
       <Search panTo={panTo}/>
+      <Locate panTo={panTo}/>
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -124,7 +125,7 @@ function Locate({panTo}) {
         );
       }}
     >
-      <img src="my_location_24px.svg" alt="some text"/>
+      <img src="svg/my_location_white_18x18.png" alt="some text"/>
     </button>
   );
 }
@@ -135,7 +136,7 @@ function Search({panTo}) {
     value,
     suggestions: {status, data},
     setValue,
-    clearSuggestion,
+    clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
       location: {lat: () => 50.937531, lng: () => 6.960279},
@@ -148,7 +149,7 @@ function Search({panTo}) {
       <Combobox
         onSelect={async (address) => {
           setValue(address, false);
-          clearSuggestion();
+          clearSuggestions();
           try {
             const results = await getGeocode({address});
             const {lat, lng} = await getLatLng(results[0]);
