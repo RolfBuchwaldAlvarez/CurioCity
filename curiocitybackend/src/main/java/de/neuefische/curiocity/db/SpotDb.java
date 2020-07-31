@@ -40,4 +40,13 @@ public class SpotDb {
     return spotList.remove(spotOptional.get());
   }
 
+  public Optional<Spot> getSpotById(String spotId) {
+    for (Spot spot : spotList) {
+      if (spot.getSpotID().equals(spotId)) {
+        return Optional.of(spot);
+      }
+    }
+    return Optional.empty();
+  }
+
 }

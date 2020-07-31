@@ -31,7 +31,8 @@ public class SpotController {
   }
 
   @DeleteMapping
-  public void deleteSpot(@PathVariable String spotId) {
+  public void deleteSpot(@RequestBody Spot spot) {
+    String spotId = spot.getSpotID();
     if (!spotService.deleteSpot(spotId)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot not found");
     }
