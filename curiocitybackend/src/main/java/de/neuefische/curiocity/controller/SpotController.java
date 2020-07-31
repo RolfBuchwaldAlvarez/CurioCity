@@ -3,7 +3,9 @@ package de.neuefische.curiocity.controller;
 import de.neuefische.curiocity.model.Spot;
 import de.neuefische.curiocity.service.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,6 +28,13 @@ public class SpotController {
   @PutMapping
   public Spot addSpot(@RequestBody Spot spot) {
     return spotService.addSpot(spot);
+  }
+
+  @DeleteMapping
+  public void deleteSpot(@PathVariable String spotId) {
+    if (!spotService.deleteSpot(spotId)) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot not found");
+    }
   }
 
 }

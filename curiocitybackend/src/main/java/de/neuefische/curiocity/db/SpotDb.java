@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class SpotDb {
@@ -29,6 +30,14 @@ public class SpotDb {
     }
     spotList.add(spot);
     return spotList.get(spotList.size() - 1);
+  }
+
+  public boolean deleteSpot(String spotId) {
+    Optional<Spot> spotOptional = getSpotById(spotId);
+    if (spotOptional.isEmpty()) {
+      return false;
+    }
+    return spotList.remove(spotOptional.get());
   }
 
 }
