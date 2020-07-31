@@ -9,10 +9,9 @@ import MainPageAppDrawerLeft from "./MainPageAppDrawerLeft";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-
   },
   appBar: {
-    width: "100vw",
+    width: "100%",
     backgroundColor: "rgba(94,114,141,0.8)",
   },
   wrapperBox: {
@@ -28,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   image: {
-    padding: theme.spacing(1),
-    width: "50%",
+    marginRight: "10%",
+    width: "40%",
   },
 }));
 
@@ -47,7 +46,7 @@ export default function MainPageHeader() {
                 <MainPageAppDrawerLeft/>
               </IconButton>
             </Box>
-            <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="center"
+            <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="flex-end"
                  alignItems="center">
               <img className={classes.image} src="/images/curiocityLogo.png" alt="curiocity"/>
             </Box>

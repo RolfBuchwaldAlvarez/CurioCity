@@ -1,0 +1,22 @@
+.search {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  z-index: 10;
+}
+
+.locate {
+  position: absolute;
+  top: 5rem;
+  right: 2%;
+  background: none;
+  border: none;
+  z-index: 10;
+}
+
+.locate img {
+  width: 30px;
+  cursor: pointer;
+}
