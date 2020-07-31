@@ -21,6 +21,7 @@ public class UserDb {
     return userList;
   }
 
+  // Behält man diese Funktion? Schaden?
   public void clearDb() {
     userList.clear();
   }
