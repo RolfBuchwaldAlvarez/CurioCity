@@ -21,13 +21,14 @@ public class UserDb {
     return userList;
   }
 
+  // Behält man diese Funktion? Schaden?
   public void clearDb() {
     userList.clear();
   }
 
   public User addUser(User user) {
     if (user.getUserId().equals("")) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not set");
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User-ID not set");
     }
     userList.add(user);
     return userList.get(userList.size() - 1);
