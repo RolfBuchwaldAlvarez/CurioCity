@@ -1,7 +1,6 @@
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import MainPageHeader from "./components/MainPageHeader";
-import MainPageBottomNavigation from "./components/MainPageBottomNavigation";
 import GoogleMaps from "../googleMaps/GoogleMaps";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +19,7 @@ export default function MainPage() {
     <>
       <MainPageHeader/>
       <GoogleMaps/>
-      <MainPageBottomNavigation/>
+      {/*<MainPageBottomNavigation/>*/}
     </>
   );
 }

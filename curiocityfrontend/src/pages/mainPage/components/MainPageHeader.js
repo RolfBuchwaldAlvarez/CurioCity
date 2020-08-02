@@ -8,7 +8,10 @@ import MainPageAppDrawerLeft from "./MainPageAppDrawerLeft";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: "absolute",
+    height: "auto",
     width: "100%",
+    zIndex: 10,
   },
   appBar: {
     width: "100%",
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     marginRight: "10%",
-    width: "40%",
+    width: "50%",
   },
 }));
 
