@@ -11,7 +11,7 @@ public class Spot {
   private String spotID;
   private String lat;
   private String lng;
-  private String category;
+  /*private String category;
   private String description;
-  private String timeStamp;
+  private String timeStamp;*/
 }
