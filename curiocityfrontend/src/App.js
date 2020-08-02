@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Switch} from "react-router-dom";
-import UserLoginSF from "./pages/userLoginSimplified/UserLoginSF";
-import CreateAccount from "./pages/createAccount/CreateAccount";
-import MainPage from "./pages/mainPage/MainPage";
-import GoogleMaps from "./pages/googleMaps/GoogleMaps";
+import UserLoginSF from "./pages/UserLoginSF";
+import CreateAccount from "./pages/CreateAccount";
+import MainPage from "./pages/MainPage";
+import GoogleMaps from "./components/googleMaps/GoogleMaps";
 import {fetchAllSpots} from "./utils/SpotsUtils";
 
 function App() {

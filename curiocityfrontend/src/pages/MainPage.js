@@ -1,7 +1,7 @@
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import MainPageHeader from "./components/MainPageHeader";
-import GoogleMaps from "../googleMaps/GoogleMaps";
+import MainPageHeader from "../components/MainPageHeader";
+import GoogleMaps from "../components/googleMaps/GoogleMaps";
 
 const useStyles = makeStyles((theme) => ({
   box1: {
