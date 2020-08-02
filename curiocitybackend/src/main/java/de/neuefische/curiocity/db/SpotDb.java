@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public class SpotDb {
   public List<Spot> spotList = new ArrayList<>(List.of(
-      new Spot("1", "50.936400", "6.947340"/*, "Public Square", "Famous public square in Cologne, Germany", "160170.26499999338"*/),
-      new Spot("2", "50.947460", "6.959180"/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
+      new Spot("1", 50.936400, 6.947340/*, "Public Square", "Famous public square in Cologne, Germany", "160170.26499999338"*/),
+      new Spot("2", 50.947460, 6.959180/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
   ));
 
   public List<Spot> getSpots() {
