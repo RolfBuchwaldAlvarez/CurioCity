@@ -36,13 +36,10 @@ export default function AppDrawerLeft(props) {
   const navLinks = [
     {text: "MySpots", link: "/main"},
     {text: "Settings", link: "/main"},
-    {text: "Logout", link: "/login", icon: <PowerSettingsNewOutlinedIcon style={{color: '#000000'}}/>}
+    {text: "Logout", link: "/login", icon: <PowerSettingsNewOutlinedIcon style={{color: '#FFFFFF'}}/>}
   ]
   const list = (anchor) => (
     <div
-      /*className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}*/
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -69,7 +66,7 @@ export default function AppDrawerLeft(props) {
   return (
 
     <React.Fragment key={"left"}>
-      <Button onClick={toggleDrawer("left", true)}>{<MenuIcon style={{color: 'rgb(109 144 199)'}}/>}</Button>
+      <Button onClick={toggleDrawer("left", true)}>{<MenuIcon style={{color: 'rgb(255 255 255)'}}/>}</Button>
       <div className={classes.MuiDrawer}>
         <Drawer
           container={container}
