@@ -4,7 +4,7 @@ import UserLoginSF from "./pages/UserLoginSF";
 import CreateAccount from "./pages/CreateAccount";
 import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
-import {fetchAllSpots} from "./utils/SpotsUtils";
+import {fetchAllSpots} from "./utils/FetchAllSpotsFunc";
 
 function App() {
 
