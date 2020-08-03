@@ -1,6 +1,6 @@
-// get all spots
-export async function fetchAllSpots() {
-  const response = await fetch('/api/spots', {
+// get all green spots
+export async function fetchAllGreenSpots() {
+  const response = await fetch('/api/greenSpots', {
     method: 'GET',
     headers: {},
   });
@@ -11,7 +11,7 @@ export async function fetchAllSpots() {
 }
 
 // add single spot
-export async function putSpot(id, lat, lng) {
+export async function putGreenSpot(id, lat, lng) {
   const response = await fetch('/api/spots', {
     method: 'PUT',
     headers: {
