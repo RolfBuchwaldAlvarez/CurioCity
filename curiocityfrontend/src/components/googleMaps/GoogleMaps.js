@@ -133,13 +133,30 @@ export default function GoogleMaps() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-
+        // creates green spots
         {greenSpots.map(spot => (
           <Marker
             /*key={spot.time.toISOString()}*/
             position={{lat: spot.lat, lng: spot.lng}}
             icon={{
               url: "/svg/greenMarker.svg",
+              scaledSize: new window.google.maps.Size(14, 14),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(7, 7),
+            }}
+            onClick={() => {
+              setSelected(spot);
+            }}
+          />
+        ))}
+
+        // creates red spots
+        {redSpots.map(spot => (
+          <Marker
+            /*key={spot.time.toISOString()}*/
+            position={{lat: spot.lat, lng: spot.lng}}
+            icon={{
+              url: "/svg/redMarker.svg",
               scaledSize: new window.google.maps.Size(14, 14),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(7, 7),
