@@ -5,8 +5,9 @@ import MapStyles from "../../styles/MapStyles";
 import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
 import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import {fetchAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
+import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
 import Button from "@material-ui/core/Button";
+import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
 
 // to use Google Places
 const libraries = ["places"]
@@ -40,15 +41,18 @@ export default function GoogleMaps() {
     libraries,
   });
 
-  // set markers on the map
-  const [markers, setMarkers] = React.useState([]);
+  // set greenSpots on map
+  const [greenSpots, setGreenSpots] = React.useState([]);
 
-  // opens info-window for selected marker
+  // set redSpots on map
+  const [redSpots, setRedSpots] = React.useState([]);
+
+  // opens info-window for selected spot
   const [selected, setSelected] = React.useState(null);
 
-  // render all spots
-  async function getAllSpots() {
-    return fetchAllSpots().then(response =>
+  // render all green spots
+  async function getAllGreenSpots() {
+    return fetchAllGreenSpots().then(response =>
       response.map(spot => {
         return {
           id: spot.id,
@@ -59,19 +63,36 @@ export default function GoogleMaps() {
   }
 
   useEffect(() => {
-    getAllSpots().then(data => setMarkers(data))
+    getAllGreenSpots().then(data => setGreenSpots(data))
+  }, [])
+
+  // render all red spots
+  async function getAllRedSpots() {
+    return fetchAllRedSpots().then(response =>
+      response.map(spot => {
+        return {
+          id: spot.id,
+          lat: spot.lat,
+          lng: spot.lng,
+        }
+      }));
+  }
+
+  useEffect(() => {
+    getAllRedSpots().then(data => setRedSpots(data))
   }, [])
 
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
   const onMapClick = React.useCallback((event) => {
     console.log(event);
-    putSpot(event.id, event.latLng.lat(), event.latLng.lng())
+    putGreenSpot(event.id, event.latLng.lat(), event.latLng.lng())
       .then((spot) => {
-        setMarkers((current) => [
+        setGreenSpots((current) => [
           ...current,
           {
             id: event.id,
+            category: "",
             lat: event.latLng.lat(),
             lng: event.latLng.lng(),
             /*time: new Date(),*/
@@ -113,10 +134,10 @@ export default function GoogleMaps() {
         onLoad={onMapLoad}
       >
 
-        {markers.map(marker => (
+        {greenSpots.map(spot => (
           <Marker
-            /*key={marker.time.toISOString()}*/
-            position={{lat: marker.lat, lng: marker.lng}}
+            /*key={spot.time.toISOString()}*/
+            position={{lat: spot.lat, lng: spot.lng}}
             icon={{
               url: "/svg/greenMarker.svg",
               scaledSize: new window.google.maps.Size(14, 14),
@@ -124,7 +145,7 @@ export default function GoogleMaps() {
               anchor: new window.google.maps.Point(7, 7),
             }}
             onClick={() => {
-              setSelected(marker);
+              setSelected(spot);
             }}
           />
         ))}
