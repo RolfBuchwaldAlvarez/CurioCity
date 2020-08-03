@@ -10,13 +10,13 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/spots")
-public class SpotController {
+@RequestMapping("/api/greenSpots")
+public class GreenSpotController {
 
   private final SpotService spotService;
 
   @Autowired
-  public SpotController(SpotService spotService) {
+  public GreenSpotController(SpotService spotService) {
     this.spotService = spotService;
   }
 
