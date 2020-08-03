@@ -16,6 +16,20 @@ public class SpotDb {
       new Spot("2", "restaurant", 50.947460, 6.959180/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
   ));
 
+  public List<Spot> getBlueSpots() {
+    if (spotList != null) {
+      List<Spot> blueSpotList = new ArrayList<>();
+      for (Spot spot : spotList) {
+        if (spot.getCategory().equals("random")) {
+          blueSpotList.add(spot);
+        }
+      }
+      return blueSpotList;
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
+    }
+  }
+
   public List<Spot> getGreenSpots() {
     if (spotList != null) {
       List<Spot> greenSpotList = new ArrayList<>();
@@ -30,6 +44,20 @@ public class SpotDb {
     }
   }
 
+  public List<Spot> getPurpleSpots() {
+    if (spotList != null) {
+      List<Spot> purpleSpotList = new ArrayList<>();
+      for (Spot spot : spotList) {
+        if (spot.getCategory().equals("concert")) {
+          purpleSpotList.add(spot);
+        }
+      }
+      return purpleSpotList;
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
+    }
+  }
+
   public List<Spot> getRedSpots() {
     if (spotList != null) {
       List<Spot> redSpotList = new ArrayList<>();
@@ -39,6 +67,20 @@ public class SpotDb {
         }
       }
       return redSpotList;
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
+    }
+  }
+
+  public List<Spot> getYellowSpots() {
+    if (spotList != null) {
+      List<Spot> yellowSpotList = new ArrayList<>();
+      for (Spot spot : spotList) {
+        if (spot.getCategory().equals("store") {
+          yellowSpotList.add(spot);
+        }
+      }
+      return yellowSpotList;
     } else {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
     }
