@@ -25,8 +25,8 @@ public class SpotService {
     return spotDb.addSpot(spot);
   }
 
-  public boolean deleteSpot(String spotId) {
-    return spotDb.deleteSpot(spotId);
+  public boolean deleteSpot(String id) {
+    return spotDb.deleteSpot(id);
   }
 
 }

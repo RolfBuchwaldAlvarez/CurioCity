@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Spot {
-  private String spotID;
+  private String id;
   private double lat;
   private double lng;
   /*private String category;

@@ -25,24 +25,24 @@ public class SpotDb {
   }
 
   public Spot addSpot(Spot spot) {
-    if (spot.getSpotID().equals("")) {
+    if (spot.getId().equals("")) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot-ID not set");
     }
     spotList.add(spot);
     return spotList.get(spotList.size() - 1);
   }
 
-  public boolean deleteSpot(String spotId) {
-    Optional<Spot> spotOptional = getSpotById(spotId);
+  public boolean deleteSpot(String id) {
+    Optional<Spot> spotOptional = getSpotById(id);
     if (spotOptional.isEmpty()) {
       return false;
     }
     return spotList.remove(spotOptional.get());
   }
 
-  public Optional<Spot> getSpotById(String spotId) {
+  public Optional<Spot> getSpotById(String id) {
     for (Spot spot : spotList) {
-      if (spot.getSpotID().equals(spotId)) {
+      if (spot.getId().equals(id)) {
         return Optional.of(spot);
       }
     }
