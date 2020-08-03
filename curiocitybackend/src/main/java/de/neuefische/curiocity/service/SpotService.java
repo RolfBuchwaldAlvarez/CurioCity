@@ -17,9 +17,14 @@ public class SpotService {
     this.spotDb = spotDb;
   }
 
-  public List<Spot> getSpots() {
-    return spotDb.getSpots();
+  public List<Spot> getGreenSpots() {
+    return spotDb.getGreenSpots();
   }
+
+  public List<Spot> getRedSpots() {
+    return spotDb.getRedSpots();
+  }
+
 
   public Spot addSpot(Spot spot) {
     return spotDb.addSpot(spot);

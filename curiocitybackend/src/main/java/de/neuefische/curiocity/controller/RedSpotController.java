@@ -21,8 +21,8 @@ public class RedSpotController {
   }
 
   @GetMapping
-  public List<Spot> getSpots() {
-    return spotService.getSpots();
+  public List<Spot> getRedSpots() {
+    return spotService.getRedSpots();
   }
 
   @PutMapping
