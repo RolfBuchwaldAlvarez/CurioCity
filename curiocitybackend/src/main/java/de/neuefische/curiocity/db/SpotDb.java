@@ -16,9 +16,29 @@ public class SpotDb {
       new Spot("2", "restaurant", 50.947460, 6.959180/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
   ));
 
-  public List<Spot> getSpots() {
+  public List<Spot> getGreenSpots() {
     if (spotList != null) {
-      return spotList;
+      List<Spot> greenSpotList = new ArrayList<>();
+      for (Spot spot : spotList) {
+        if (spot.getCategory().equals("restaurant")) {
+          greenSpotList.add(spot);
+        }
+      }
+      return greenSpotList;
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
+    }
+  }
+
+  public List<Spot> getRedSpots() {
+    if (spotList != null) {
+      List<Spot> redSpotList = new ArrayList<>();
+      for (Spot spot : spotList) {
+        if (spot.getCategory().equals("bar")) {
+          redSpotList.add(spot);
+        }
+      }
+      return redSpotList;
     } else {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No spots found!");
     }
