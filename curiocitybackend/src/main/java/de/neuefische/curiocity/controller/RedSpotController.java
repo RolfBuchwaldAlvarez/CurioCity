@@ -16,7 +16,7 @@ public class RedSpotController {
   private final SpotService spotService;
 
   @Autowired
-  public GreenSpotController(SpotService spotService) {
+  public RedSpotController(SpotService spotService) {
     this.spotService = spotService;
   }
 
