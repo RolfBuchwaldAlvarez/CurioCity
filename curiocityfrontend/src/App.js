@@ -1,18 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import UserLoginSF from "./pages/UserLoginSF";
 import CreateAccount from "./pages/CreateAccount";
 import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
-import {fetchAllSpots} from "./utils/FetchAllSpotsFunc";
 
 function App() {
-
-  const [spots, setSpots] = useState([]);
-
-  useEffect(() => {
-    fetchAllSpots().then(data => setSpots(data))
-  }, [])
 
   return (
     <Switch>
@@ -26,11 +19,10 @@ function App() {
         <MainPage/>
       </Route>
       <Route exact path={"/maps"}>
-        <GoogleMaps>
-          {spots.map((spot) => <div key={spot.id}>
-            {spot.description}
-          </div>)}
-        </GoogleMaps>
+        <GoogleMaps/>
+      </Route>
+      <Route exact path={"/"}>
+        <GoogleMaps/>
       </Route>
     </Switch>
   );
