@@ -80,7 +80,7 @@ public class SpotDb {
     if (spotList != null) {
       List<Spot> yellowSpotList = new ArrayList<>();
       for (Spot spot : spotList) {
-        if (spot.getCategory().equals("store") {
+        if (spot.getCategory().equals("store")) {
           yellowSpotList.add(spot);
         }
       }
