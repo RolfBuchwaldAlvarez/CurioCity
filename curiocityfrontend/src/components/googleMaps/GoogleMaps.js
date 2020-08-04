@@ -1,16 +1,13 @@
 import React, {useEffect} from "react";
 import "./googleMaps.css";
-import {GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
+import {GoogleMap, InfoWindow, useLoadScript} from "@react-google-maps/api";
 import MapStyles from "../../styles/MapStyles";
 import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
 import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Button from "@material-ui/core/Button";
-import {fetchAllBlueSpots} from "../../utils/fetchBlueSpotsFuncs";
-import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
-import {fetchAllPurpleSpots} from "../../utils/fetchPurpleSpotsFuncs";
-import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
-import {fetchAllYellowSpots} from "../../utils/fetchYellowSpotsFuncs";
+import {fetchAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
+import {SpotMarker} from "./googleMapsUtils/SpotMarker";
 
 // to use Google Places
 const libraries = ["places"]
@@ -44,98 +41,22 @@ export default function GoogleMaps() {
     libraries,
   });
 
-  // set blue spots on map
-  const [blueSpots, setBlueSpots] = React.useState([]);
-
-  // set green spots on map
-  const [greenSpots, setGreenSpots] = React.useState([]);
-
-  // set purple spots on map
-  const [purpleSpots, setPurpleSpots] = React.useState([]);
-
-  // set red spots on map
-  const [redSpots, setRedSpots] = React.useState([]);
-
-  // set yellow spots on map
-  const [yellowSpots, setYellowSpots] = React.useState([]);
+  // set all spots on map
+  const [spots, setSpots] = React.useState([]);
 
   // opens info-window for selected spot
   const [selected, setSelected] = React.useState(null);
 
-  // render all blue spots
-  async function getAllBlueSpots() {
-    return fetchAllBlueSpots().then(response =>
-      response.map(spot => {
-        return {
-          id: spot.id,
-          lat: spot.lat,
-          lng: spot.lng,
-        }
-      }));
-  }
-
-  // render all green spots
-  async function getAllGreenSpots() {
-    return fetchAllGreenSpots().then(response =>
-      response.map(spot => {
-        return {
-          id: spot.id,
-          lat: spot.lat,
-          lng: spot.lng,
-        }
-      }));
-  }
-
-  // render all purple spots
-  async function getAllPurpleSpots() {
-    return fetchAllPurpleSpots().then(response =>
-      response.map(spot => {
-        return {
-          id: spot.id,
-          lat: spot.lat,
-          lng: spot.lng,
-        }
-      }));
-  }
-
-  // render all red spots
-  async function getAllRedSpots() {
-    return fetchAllRedSpots().then(response =>
-      response.map(spot => {
-        return {
-          id: spot.id,
-          lat: spot.lat,
-          lng: spot.lng,
-        }
-      }));
-  }
-
-  // render all yellow spots
-  async function getAllYellowSpots() {
-    return fetchAllYellowSpots().then(response =>
-      response.map(spot => {
-        return {
-          id: spot.id,
-          lat: spot.lat,
-          lng: spot.lng,
-        }
-      }));
-  }
-
   useEffect(() => {
-    getAllBlueSpots().then(data => setBlueSpots(data));
-    getAllGreenSpots().then(data => setGreenSpots(data));
-    getAllPurpleSpots().then(data => setPurpleSpots(data));
-    getAllYellowSpots().then(data => setYellowSpots(data));
-    getAllRedSpots().then(data => setRedSpots(data));
+    fetchAllSpots().then(data => setSpots(data));
   }, [])
 
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
   const onMapClick = React.useCallback((event) => {
-    putGreenSpot("restaurant", event.latLng.lat(), event.latLng.lng())
+    putSpot("restaurant", event.latLng.lat(), event.latLng.lng())
       .then((spot) => {
-        setGreenSpots((current) => [
+        setSpots((current) => [
           ...current, spot
         ])
       });
@@ -174,90 +95,10 @@ export default function GoogleMaps() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        // creates blue spots
-        {blueSpots.map(spot => (
-          <Marker
-            /*key={spot.time.toISOString()}*/
-            position={{lat: spot.lat, lng: spot.lng}}
-            icon={{
-              url: "/svg/blueSpot.svg",
-              scaledSize: new window.google.maps.Size(14, 14),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(7, 7),
-            }}
-            onClick={() => {
-              setSelected(spot);
-            }}
-          />
-        ))}
 
-        // creates green spots
-        {greenSpots.map(spot => (
-          <Marker
-            /*key={spot.time.toISOString()}*/
-            position={{lat: spot.lat, lng: spot.lng}}
-            icon={{
-              url: "/svg/greenSpot.svg",
-              scaledSize: new window.google.maps.Size(14, 14),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(7, 7),
-            }}
-            onClick={() => {
-              setSelected(spot);
-            }}
-          />
-        ))}
-
-        // creates purple spots
-        {purpleSpots.map(
-          spot => (
-            <Marker
-              /*key={spot.time.toISOString()}*/
-              position={{lat: spot.lat, lng: spot.lng}}
-              icon={{
-                url: "/svg/purpleSpot.svg",
-                scaledSize: new window.google.maps.Size(14, 14),
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(7, 7),
-              }}
-              onClick={() => {
-                setSelected(spot);
-              }}
-            />
-          ))}
-
-        // creates red spots
-        {redSpots.map(spot => (
-          <Marker
-            /*key={spot.time.toISOString()}*/
-            position={{lat: spot.lat, lng: spot.lng}}
-            icon={{
-              url: "/svg/redSpot.svg",
-              scaledSize: new window.google.maps.Size(14, 14),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(7, 7),
-            }}
-            onClick={() => {
-              setSelected(spot);
-            }}
-          />
-        ))}
-
-        // creates yellow spots
-        {yellowSpots.map(spot => (
-          <Marker
-            /*key={spot.time.toISOString()}*/
-            position={{lat: spot.lat, lng: spot.lng}}
-            icon={{
-              url: "/svg/yellowSpot.svg",
-              scaledSize: new window.google.maps.Size(14, 14),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(7, 7),
-            }}
-            onClick={() => {
-              setSelected(spot);
-            }}
-          />
+        // creates all spots
+        {spots.map(spot => (
+          <SpotMarker key={spot.id} spot={spot} setSelected={setSelected}/>
         ))}
 
         {/* info-window function for selected spot */}
