@@ -11,19 +11,19 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/greenSpots")
-public class GreenSpotController {
+@RequestMapping("/api/spots")
+public class SpotController {
 
   private final SpotService spotService;
 
   @Autowired
-  public GreenSpotController(SpotService spotService) {
+  public SpotController(SpotService spotService) {
     this.spotService = spotService;
   }
 
   @GetMapping
-  public List<Spot> getGreenSpots() {
-    return spotService.getGreenSpots();
+  public List<Spot> getSpots() {
+    return spotService.getSpots();
   }
 
   @PutMapping
