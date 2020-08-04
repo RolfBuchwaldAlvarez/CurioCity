@@ -27,6 +27,12 @@ function getIconUrl(category) {
       return "/svg/greenSpot.svg";
     case "bar":
       return "/svg/redSpot.svg";
+    case "store":
+      return "/svg/yellowSpot.svg";
+    case "concert":
+      return "/svg/purpleSpot.svg";
+    case "random":
+      return "/svg/blueSpot.svg";
     default:
       return "/svg/greenSpot.svg";
   }
