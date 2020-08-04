@@ -5,8 +5,10 @@ import MapStyles from "../../styles/MapStyles";
 import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
 import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
 import Button from "@material-ui/core/Button";
+import {fetchAllBlueSpots} from "../../utils/fetchBlueSpotsFuncs";
+import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
+import {fetchAllPurpleSpots} from "../../utils/fetchPurpleSpotsFuncs";
 import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
 
 // to use Google Places
