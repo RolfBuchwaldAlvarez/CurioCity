@@ -7,7 +7,7 @@ import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,}
 import "@reach/combobox/styles.css";
 import Button from "@material-ui/core/Button";
 import {fetchAllBlueSpots} from "../../utils/fetchBlueSpotsFuncs";
-import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
+import {fetchAllGreenSpots} from "../../utils/fetchGreenSpotsFuncs";
 import {fetchAllPurpleSpots} from "../../utils/fetchPurpleSpotsFuncs";
 import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
 import {fetchAllYellowSpots} from "../../utils/fetchYellowSpotsFuncs";
@@ -146,18 +146,14 @@ export default function GoogleMaps() {
   // useCallback creates a function which always keeps the same value unless deps are changed
   const onMapClick = React.useCallback((event) => {
     console.log(event);
-    putGreenSpot(event.id, event.latLng.lat(), event.latLng.lng())
-      .then((spot) => {
-        setGreenSpots((current) => [
-          ...current,
-          {
-            id: event.id,
-            category: "",
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng(),
-            /*time: new Date(),*/
-          }]);
-      })
+    setGreenSpots((current) => [
+      ...current,
+      {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
   }, []);
 
   // useRef() opposite of useState (keeps state without re-rendering)
