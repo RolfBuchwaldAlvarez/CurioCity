@@ -10,19 +10,19 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/spots")
-public class SpotController {
+@RequestMapping("/api/greenSpots")
+public class GreenSpotController {
 
   private final SpotService spotService;
 
   @Autowired
-  public SpotController(SpotService spotService) {
+  public GreenSpotController(SpotService spotService) {
     this.spotService = spotService;
   }
 
   @GetMapping
-  public List<Spot> getSpots() {
-    return spotService.getSpots();
+  public List<Spot> getGreenSpots() {
+    return spotService.getGreenSpots();
   }
 
   @PutMapping
@@ -32,8 +32,8 @@ public class SpotController {
 
   @DeleteMapping
   public void deleteSpot(@RequestBody Spot spot) {
-    String spotId = spot.getSpotID();
-    if (!spotService.deleteSpot(spotId)) {
+    String id = spot.getId();
+    if (!spotService.deleteSpot(id)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot not found");
     }
   }

@@ -17,16 +17,33 @@ public class SpotService {
     this.spotDb = spotDb;
   }
 
-  public List<Spot> getSpots() {
-    return spotDb.getSpots();
+  public List<Spot> getGreenSpots() {
+    return spotDb.getGreenSpots();
   }
+
+  public List<Spot> getRedSpots() {
+    return spotDb.getRedSpots();
+  }
+
+  public List<Spot> getBlueSpots() {
+    return spotDb.getBlueSpots();
+  }
+
+  public List<Spot> getPurpleSpots() {
+    return spotDb.getPurpleSpots();
+  }
+
+  public List<Spot> getYellowSpots() {
+    return spotDb.getYellowSpots();
+  }
+
 
   public Spot addSpot(Spot spot) {
     return spotDb.addSpot(spot);
   }
 
-  public boolean deleteSpot(String spotId) {
-    return spotDb.deleteSpot(spotId);
+  public boolean deleteSpot(String id) {
+    return spotDb.deleteSpot(id);
   }
 
 }

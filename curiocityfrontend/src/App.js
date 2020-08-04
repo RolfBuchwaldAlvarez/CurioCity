@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import UserLoginSF from "./pages/userLoginSimplified/UserLoginSF";
-import CreateAccount from "./pages/createAccount/CreateAccount";
-import MainPage from "./pages/mainPage/MainPage";
-import GoogleMaps from "./pages/googleMaps/GoogleMaps";
+import UserLoginSF from "./pages/UserLoginSF";
+import CreateAccount from "./pages/CreateAccount";
+import MainPage from "./pages/MainPage";
+import GoogleMaps from "./components/googleMaps/GoogleMaps";
 
 function App() {
 
@@ -19,6 +19,9 @@ function App() {
         <MainPage/>
       </Route>
       <Route exact path={"/maps"}>
+        <GoogleMaps/>
+      </Route>
+      <Route exact path={"/"}>
         <GoogleMaps/>
       </Route>
     </Switch>
