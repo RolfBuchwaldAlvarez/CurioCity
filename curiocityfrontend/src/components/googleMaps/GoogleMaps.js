@@ -10,6 +10,7 @@ import {fetchAllBlueSpots} from "../../utils/fetchBlueSpotsFuncs";
 import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
 import {fetchAllPurpleSpots} from "../../utils/fetchPurpleSpotsFuncs";
 import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
+import {fetchAllYellowSpots} from "../../utils/fetchYellowSpotsFuncs";
 
 // to use Google Places
 const libraries = ["places"]
@@ -123,6 +124,22 @@ export default function GoogleMaps() {
 
   useEffect(() => {
     getAllRedSpots().then(data => setRedSpots(data))
+  }, [])
+
+  // render all yellow spots
+  async function getAllYellowSpots() {
+    return fetchAllYellowSpots().then(response =>
+      response.map(spot => {
+        return {
+          id: spot.id,
+          lat: spot.lat,
+          lng: spot.lng,
+        }
+      }));
+  }
+
+  useEffect(() => {
+    getAllYellowSpots().then(data => setYellowSpots(data))
   }, [])
 
   // prevent map to trigger a re-render
