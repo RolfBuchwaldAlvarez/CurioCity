@@ -41,14 +41,39 @@ export default function GoogleMaps() {
     libraries,
   });
 
-  // set greenSpots on map
+  // set blue spots on map
+  const [blueSpots, setBlueSpots] = React.useState([]);
+
+  // set green spots on map
   const [greenSpots, setGreenSpots] = React.useState([]);
 
-  // set redSpots on map
+  // set purple spots on map
+  const [purpleSpots, setPurpleSpots] = React.useState([]);
+
+  // set red spots on map
   const [redSpots, setRedSpots] = React.useState([]);
+
+  // set yellow spots on map
+  const [yellowSpots, setYellowSpots] = React.useState([]);
 
   // opens info-window for selected spot
   const [selected, setSelected] = React.useState(null);
+
+  // render all blue spots
+  async function getAllBlueSpots() {
+    return fetchAllBlueSpots().then(response =>
+      response.map(spot => {
+        return {
+          id: spot.id,
+          lat: spot.lat,
+          lng: spot.lng,
+        }
+      }));
+  }
+
+  useEffect(() => {
+    getAllBlueSpots().then(data => setBlueSpots(data))
+  }, [])
 
   // render all green spots
   async function getAllGreenSpots() {
@@ -64,6 +89,22 @@ export default function GoogleMaps() {
 
   useEffect(() => {
     getAllGreenSpots().then(data => setGreenSpots(data))
+  }, [])
+
+  // render all purple spots
+  async function getAllPurpleSpots() {
+    return fetchAllPurpleSpots().then(response =>
+      response.map(spot => {
+        return {
+          id: spot.id,
+          lat: spot.lat,
+          lng: spot.lng,
+        }
+      }));
+  }
+
+  useEffect(() => {
+    getAllPurpleSpots().then(data => setPurpleSpots(data))
   }, [])
 
   // render all red spots
@@ -133,13 +174,47 @@ export default function GoogleMaps() {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
+        // creates blue spots
+        {blueSpots.map(spot => (
+          <Marker
+            /*key={spot.time.toISOString()}*/
+            position={{lat: spot.lat, lng: spot.lng}}
+            icon={{
+              url: "/svg/blueSpot.svg",
+              scaledSize: new window.google.maps.Size(14, 14),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(7, 7),
+            }}
+            onClick={() => {
+              setSelected(spot);
+            }}
+          />
+        ))}
+
         // creates green spots
         {greenSpots.map(spot => (
           <Marker
             /*key={spot.time.toISOString()}*/
             position={{lat: spot.lat, lng: spot.lng}}
             icon={{
-              url: "/svg/greenMarker.svg",
+              url: "/svg/greenSpot.svg",
+              scaledSize: new window.google.maps.Size(14, 14),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(7, 7),
+            }}
+            onClick={() => {
+              setSelected(spot);
+            }}
+          />
+        ))}
+
+        // creates purple spots
+        {purpleSpots.map(spot => (
+          <Marker
+            /*key={spot.time.toISOString()}*/
+            position={{lat: spot.lat, lng: spot.lng}}
+            icon={{
+              url: "/svg/purpleSpot.svg",
               scaledSize: new window.google.maps.Size(14, 14),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(7, 7),
@@ -156,7 +231,24 @@ export default function GoogleMaps() {
             /*key={spot.time.toISOString()}*/
             position={{lat: spot.lat, lng: spot.lng}}
             icon={{
-              url: "/svg/redMarker.svg",
+              url: "/svg/redSpot.svg",
+              scaledSize: new window.google.maps.Size(14, 14),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(7, 7),
+            }}
+            onClick={() => {
+              setSelected(spot);
+            }}
+          />
+        ))}
+
+        // creates yellow spots
+        {yellowSpots.map(spot => (
+          <Marker
+            /*key={spot.time.toISOString()}*/
+            position={{lat: spot.lat, lng: spot.lng}}
+            icon={{
+              url: "/svg/yellowSpot.svg",
               scaledSize: new window.google.maps.Size(14, 14),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(7, 7),
