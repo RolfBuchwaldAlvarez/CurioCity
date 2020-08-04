@@ -1,8 +1,8 @@
 // get all green spots
 import React from "react";
 
-export async function fetchAllGreenSpots() {
-  const response = await fetch('/api/greenSpots', {
+export async function fetchAllSpots() {
+  const response = await fetch('/api/spots', {
     method: 'GET',
     headers: {},
   });
@@ -13,18 +13,19 @@ export async function fetchAllGreenSpots() {
 }
 
 // add single spot
-export async function putGreenSpot(id, category, lat, lng) {
-  const response = await fetch('/api/spots', {
+export function putSpot(category, lat, lng) {
+  return fetch('/api/spots', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({id, category, lat, lng}),
-  });
-  if (response.status !== 200) {
-    throw new Error("failed to fetch data");
-  }
-  return await response.json();
+    body: JSON.stringify({category, lat, lng}),
+  }).then((response) => {
+    if (response.status !== 200) {
+      throw new Error("failed to fetch data");
+    }
+    return response.json();
+  })
 }
 
 // temporär aus GoolgeMaps.js ausgelagert

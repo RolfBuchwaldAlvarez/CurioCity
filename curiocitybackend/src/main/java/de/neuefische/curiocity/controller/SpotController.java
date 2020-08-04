@@ -7,26 +7,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/greenSpots")
-public class GreenSpotController {
+@RequestMapping("/api/spots")
+public class SpotController {
 
   private final SpotService spotService;
 
   @Autowired
-  public GreenSpotController(SpotService spotService) {
+  public SpotController(SpotService spotService) {
     this.spotService = spotService;
   }
 
   @GetMapping
-  public List<Spot> getGreenSpots() {
-    return spotService.getGreenSpots();
+  public List<Spot> getSpots() {
+    return spotService.getSpots();
   }
 
   @PutMapping
-  public Spot addSpot(@RequestBody Spot spot) {
+  public Spot addSpot(@RequestBody @Valid Spot spot) {
     return spotService.addSpot(spot);
   }
 
