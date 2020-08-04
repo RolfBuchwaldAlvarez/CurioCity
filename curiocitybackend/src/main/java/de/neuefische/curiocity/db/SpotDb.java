@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class SpotDb {
@@ -66,7 +67,7 @@ public class SpotDb {
     if (spotList != null) {
       List<Spot> redSpotList = new ArrayList<>();
       for (Spot spot : spotList) {
-        if (spot.getCategory().equals("bar")) {
+        if ("bar".equals(spot.getCategory())) {
           redSpotList.add(spot);
         }
       }
@@ -91,9 +92,7 @@ public class SpotDb {
   }
 
   public Spot addSpot(Spot spot) {
-    if (spot.getId().equals("")) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot-ID not set");
-    }
+    spot.setId(UUID.randomUUID().toString());
     spotList.add(spot);
     return spotList.get(spotList.size() - 1);
   }

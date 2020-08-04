@@ -7,7 +7,7 @@ import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,}
 import "@reach/combobox/styles.css";
 import Button from "@material-ui/core/Button";
 import {fetchAllBlueSpots} from "../../utils/fetchBlueSpotsFuncs";
-import {fetchAllGreenSpots} from "../../utils/fetchGreenSpotsFuncs";
+import {fetchAllGreenSpots, putGreenSpot} from "../../utils/fetchGreenSpotsFuncs";
 import {fetchAllPurpleSpots} from "../../utils/fetchPurpleSpotsFuncs";
 import {fetchAllRedSpots} from "../../utils/fetchRedSpotsFunc";
 import {fetchAllYellowSpots} from "../../utils/fetchYellowSpotsFuncs";
@@ -74,10 +74,6 @@ export default function GoogleMaps() {
       }));
   }
 
-  useEffect(() => {
-    getAllBlueSpots().then(data => setBlueSpots(data))
-  }, [])
-
   // render all green spots
   async function getAllGreenSpots() {
     return fetchAllGreenSpots().then(response =>
@@ -89,10 +85,6 @@ export default function GoogleMaps() {
         }
       }));
   }
-
-  useEffect(() => {
-    getAllGreenSpots().then(data => setGreenSpots(data))
-  }, [])
 
   // render all purple spots
   async function getAllPurpleSpots() {
@@ -106,10 +98,6 @@ export default function GoogleMaps() {
       }));
   }
 
-  useEffect(() => {
-    getAllPurpleSpots().then(data => setPurpleSpots(data))
-  }, [])
-
   // render all red spots
   async function getAllRedSpots() {
     return fetchAllRedSpots().then(response =>
@@ -121,10 +109,6 @@ export default function GoogleMaps() {
         }
       }));
   }
-
-  useEffect(() => {
-    getAllRedSpots().then(data => setRedSpots(data))
-  }, [])
 
   // render all yellow spots
   async function getAllYellowSpots() {
@@ -139,21 +123,22 @@ export default function GoogleMaps() {
   }
 
   useEffect(() => {
-    getAllYellowSpots().then(data => setYellowSpots(data))
+    getAllBlueSpots().then(data => setBlueSpots(data));
+    getAllGreenSpots().then(data => setGreenSpots(data));
+    getAllPurpleSpots().then(data => setPurpleSpots(data));
+    getAllYellowSpots().then(data => setYellowSpots(data));
+    getAllRedSpots().then(data => setRedSpots(data));
   }, [])
 
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
   const onMapClick = React.useCallback((event) => {
-    console.log(event);
-    setGreenSpots((current) => [
-      ...current,
-      {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
+    putGreenSpot("restaurant", event.latLng.lat(), event.latLng.lng())
+      .then((spot) => {
+        setGreenSpots((current) => [
+          ...current, spot
+        ])
+      });
   }, []);
 
   // useRef() opposite of useState (keeps state without re-rendering)
@@ -224,21 +209,22 @@ export default function GoogleMaps() {
         ))}
 
         // creates purple spots
-        {purpleSpots.map(spot => (
-          <Marker
-            /*key={spot.time.toISOString()}*/
-            position={{lat: spot.lat, lng: spot.lng}}
-            icon={{
-              url: "/svg/purpleSpot.svg",
-              scaledSize: new window.google.maps.Size(14, 14),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(7, 7),
-            }}
-            onClick={() => {
-              setSelected(spot);
-            }}
-          />
-        ))}
+        {purpleSpots.map(
+          spot => (
+            <Marker
+              /*key={spot.time.toISOString()}*/
+              position={{lat: spot.lat, lng: spot.lng}}
+              icon={{
+                url: "/svg/purpleSpot.svg",
+                scaledSize: new window.google.maps.Size(14, 14),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(7, 7),
+              }}
+              onClick={() => {
+                setSelected(spot);
+              }}
+            />
+          ))}
 
         // creates red spots
         {redSpots.map(spot => (
