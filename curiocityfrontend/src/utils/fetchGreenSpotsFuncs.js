@@ -9,3 +9,18 @@ export async function fetchAllGreenSpots() {
   }
   return await response.json();
 }
+
+// add single spot
+export async function putGreenSpot(id, category, lat, lng) {
+  const response = await fetch('/api/spots', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({id, category, lat, lng}),
+  });
+  if (response.status !== 200) {
+    throw new Error("failed to fetch data");
+  }
+  return await response.json();
+}
