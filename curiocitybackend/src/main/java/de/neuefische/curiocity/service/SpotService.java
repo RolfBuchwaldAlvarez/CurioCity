@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SpotService {
@@ -23,6 +24,10 @@ public class SpotService {
 
   public Spot addSpot(Spot spot) {
     return spotDb.addSpot(spot);
+  }
+
+  public Optional<Spot> editSpotDescription(String id, String description) {
+    return spotDb.editSpotDescription(id, description);
   }
 
   public boolean deleteSpot(String id) {

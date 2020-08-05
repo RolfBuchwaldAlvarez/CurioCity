@@ -1,6 +1,7 @@
 package de.neuefische.curiocity.controller;
 
 import de.neuefische.curiocity.model.Spot;
+import de.neuefische.curiocity.model.dto.EditSpotDescriptionDto;
 import de.neuefische.curiocity.service.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/spots")
@@ -31,9 +33,17 @@ public class SpotController {
     return spotService.addSpot(spot);
   }
 
-  @DeleteMapping
-  public void deleteSpot(@RequestBody Spot spot) {
-    String id = spot.getId();
+  @PutMapping(path = "{id}/description")
+  public Spot editSpotDescription(@RequestBody @Valid EditSpotDescriptionDto editSpotDescriptionDto, @PathVariable String id) {
+    Optional<Spot> spotOptional = spotService.editSpotDescription(id, editSpotDescriptionDto.getDescription());
+    if (spotOptional.isPresent()) {
+      return spotOptional.get();
+    }
+    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot not found");
+  }
+
+  @DeleteMapping(path = "{id}")
+  public void deleteSpot(@PathVariable String id) {
     if (!spotService.deleteSpot(id)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Spot not found");
     }
