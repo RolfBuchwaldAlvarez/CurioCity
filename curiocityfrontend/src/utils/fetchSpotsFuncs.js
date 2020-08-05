@@ -1,10 +1,12 @@
 // get all green spots
 import React from "react";
 
-export async function fetchAllSpots() {
+export async function getAllSpots() {
   const response = await fetch('/api/spots', {
     method: 'GET',
-    headers: {},
+    headers: {
+      'Accept': 'application/json',
+    },
   });
   if (response.status !== 200) {
     throw new Error(response.statusText);
@@ -28,21 +30,14 @@ export function putSpot(category, lat, lng) {
   })
 }
 
-// temporär aus GoolgeMaps.js ausgelagert
-
-/*
-const onMapClick = React.useCallback((event) => {
-  console.log(event);
-  putGreenSpot(event.id, event.category, event.latLng.lat(), event.latLng.lng())
-    .then((spot) => {
-      setGreenSpots((current) => [
-        ...current,
-        {
-          id: event.id,
-          category: event.category,
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-          /!*time: new Date(),*!/
-        }]);
-    })
-}, []);*/
+// delete single spot
+export function deleteSpot(id) {
+  return fetch(`/api/spots/${id}`, {
+    method: 'DELETE',
+    headers: {},
+  }).then((response) => {
+    if (response.status !== 200) {
+      throw new Error("failed to fetch data");
+    }
+  });
+}

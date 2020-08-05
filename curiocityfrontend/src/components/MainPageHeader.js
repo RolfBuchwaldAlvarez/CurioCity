@@ -51,7 +51,7 @@ export default function MainPageHeader() {
             </Box>
             <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="flex-end"
                  alignItems="center">
-              <img className={classes.image} src="/images/curiocityLogo.png" alt="curiocity"/>
+              {/*<img className={classes.image} src="/svg/curiocityLogo.svg" alt="curiocity"/>*/}
             </Box>
           </Box>
         </Toolbar>
