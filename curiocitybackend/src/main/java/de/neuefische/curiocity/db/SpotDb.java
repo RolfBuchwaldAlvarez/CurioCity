@@ -13,10 +13,10 @@ public class SpotDb {
   public List<Spot> spotList = new ArrayList<>(List.of(
       new Spot("1", "bar", 50.936400, 6.947340, "Public Square" /*, "Famous public square in Cologne, Germany", "160170.26499999338"*/),
       new Spot("2", "restaurant", 50.947460, 6.959180, "Cathedral" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("3", "random", 50.947420, 6.950160/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("4", "concert", 50.947440, 6.952140/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("5", "store", 50.936600, 6.954120/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("6", "concert", 50.939460, 6.956100/*, "Cathedral", "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
+      new Spot("3", "random", 50.947420, 6.950160, "Cathedral" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("4", "concert", 50.947440, 6.952140, "Cathedral" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("5", "store", 50.936600, 6.954120, "Cathedral" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("6", "concert", 50.939460, 6.956100, "Cathedral" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
   ));
 
   public List<Spot> getSpots() {
