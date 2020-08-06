@@ -6,7 +6,7 @@ import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomp
 import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Button from "@material-ui/core/Button";
-import {fetchAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
+import {deleteSpot, getAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
 import {SpotMarker} from "./googleMapsUtils/SpotMarker";
 
 // to use Google Places
@@ -48,13 +48,13 @@ export default function GoogleMaps() {
   const [selected, setSelected] = React.useState(null);
 
   useEffect(() => {
-    fetchAllSpots().then(data => setSpots(data));
+    getAllSpots().then(data => setSpots(data));
   }, [])
 
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
   const onMapClick = React.useCallback((event) => {
-    putSpot("restaurant", event.latLng.lat(), event.latLng.lng())
+    putSpot("random", event.latLng.lat(), event.latLng.lng())
       .then((spot) => {
         setSpots((current) => [
           ...current, spot
@@ -72,7 +72,7 @@ export default function GoogleMaps() {
   // re-center map to new search location
   const panTo = React.useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng});
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(16);
   }, []);
 
   if (loadError) {
@@ -108,11 +108,10 @@ export default function GoogleMaps() {
             onCloseClick={() => {
               setSelected(null);
             }}
-            style={{backgroundColor: "rgba(245,245,245, 0.5)"}}
           >
-            <div>
-              <h2>Restaurant</h2>
-              <p>A cozy looking italian diner!</p>
+            <div style={{maxWidth: 176}}>
+              <h2>RESTAURANT</h2>
+              <p>Retro style place with a sexy food selection. Can't wait to taste the fancy looking pasta dishes!</p>
               {/*<p>{formatRelative(selected.time, new Date())}</p>*/}
               <div style={{
                 display: "flex",
@@ -120,7 +119,15 @@ export default function GoogleMaps() {
                 justifyContent: "flex-end",
                 width: "100%",
               }}>
-                <Button color="secondary">EDIT</Button>
+                <Button color="secondary"
+                        onClick={() => {
+                          deleteSpot(selected.id)
+                            .then(() => {
+                              setSelected(undefined);
+                              setSpots(spots.filter(spot => spot.id !== selected.id))
+                            });
+                        }}
+                >DELETE</Button>
               </div>
             </div>
           </InfoWindow>
@@ -133,7 +140,7 @@ export default function GoogleMaps() {
 // find current position and center screen accordingly
 function Locate({panTo}) {
   return (
-    <button
+    <Button
       className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
@@ -147,8 +154,8 @@ function Locate({panTo}) {
         );
       }}
     >
-      <img src="svg/my_location_white_18x18.png" alt="some text"/>
-    </button>
+      <img src="svg/myLocation.svg" alt="some text"/>
+    </Button>
   );
 }
 
