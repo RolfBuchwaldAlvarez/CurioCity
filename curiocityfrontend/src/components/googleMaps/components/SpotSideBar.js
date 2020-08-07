@@ -4,66 +4,55 @@ export default function SpotSideBar() {
   return (
     <div
       style={{
-        /*display: "flex",
+        position: "absolute",
+        right: "2%",
+        top: 360,
+        display: "flex",
         flexDirection: "column",
-        alignItems: "flex-end",
-        justifyContent: "center",*/
-        height: "100vh",
-        width: "100vw",
-        background: "none",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "1px solid #545A61",
+        borderRadius: 20,
+        height: 185,
+        width: 40,
+        backgroundColor: "white",
         zIndex: 50,
-      }}
-    >
-      <div
+      }}>
+      <img
+        src="/svg/blueIconSpot.svg"
+        alt="greenIconSpot"
         style={{
-          position: "absolute",
-          right: "2%",
-          top: 330,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          border: "1px solid #545A61",
-          borderRadius: 20,
-          height: 185,
-          width: 40,
-        }}>
-        <img
-          src="/svg/blueIconSpot.svg"
-          alt="greenIconSpot"
-          style={{
-            padding: "5px 5px"
-          }}
-        />
-        <img
-          src="/svg/purpleIconSpot.svg"
-          alt="greenIconSpot"
-          style={{
-            padding: "5px 5px"
-          }}
-        />
-        <img
-          src="/svg/yellowIconSpot.svg"
-          alt="greenIconSpot"
-          style={{
-            padding: "5px 5px"
-          }}
-        />
-        <img
-          src="/svg/redIconSpot.svg"
-          alt="greenIconSpot"
-          style={{
-            padding: "5px 5px"
-          }}
-        />
-        <img
-          src="/svg/greenIconSpot.svg"
-          alt="greenIconSpot"
-          style={{
-            padding: "5px 5px"
-          }}
-        />
-      </div>
+          padding: "5px 5px"
+        }}
+      />
+      <img
+        src="/svg/purpleIconSpot.svg"
+        alt="greenIconSpot"
+        style={{
+          padding: "5px 5px"
+        }}
+      />
+      <img
+        src="/svg/yellowIconSpot.svg"
+        alt="greenIconSpot"
+        style={{
+          padding: "5px 5px"
+        }}
+      />
+      <img
+        src="/svg/redIconSpot.svg"
+        alt="greenIconSpot"
+        style={{
+          padding: "5px 5px"
+        }}
+      />
+      <img
+        src="/svg/greenIconSpot.svg"
+        alt="greenIconSpot"
+        style={{
+          padding: "5px 5px"
+        }}
+      />
     </div>
   );
 }
