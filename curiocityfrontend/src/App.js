@@ -4,11 +4,15 @@ import UserLoginSF from "./pages/UserLoginSF";
 import CreateAccount from "./pages/CreateAccount";
 import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
+import SetSpotCategoryCard from "./components/googleMaps/components/SetSpotCategoryCard";
 
 function App() {
 
   return (
     <Switch>
+      <Route exact path={"/setSpotCategoryCard"}>
+        <SetSpotCategoryCard/>
+      </Route>
       <Route exact path={"/createAccount"}>
         <CreateAccount/>
       </Route>

@@ -1,21 +1,21 @@
 import React, {useEffect} from "react";
-import "./googleMaps.css";
+import "./styles/googleMaps.css";
 import {GoogleMap, InfoWindow, useLoadScript} from "@react-google-maps/api";
-import MapStyles from "../../styles/MapStyles";
-import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
-import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover,} from "@reach/combobox";
+import MapStyles from "./styles/MapStyles";
 import "@reach/combobox/styles.css";
-import Button from "@material-ui/core/Button";
-import {deleteSpot, getAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
+import {getAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
 import {SpotMarker} from "./googleMapsUtils/SpotMarker";
+import Locate from "./components/Locate";
+import Search from "./components/Search";
+import InfoWindowContent from "./components/InfoWindowContent";
 
 // to use Google Places
 const libraries = ["places"]
 
 // set map size
 const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+  width: "375px",
+  height: "667px",
 };
 
 // set Cologne, Germany as starting point
@@ -83,7 +83,14 @@ export default function GoogleMaps() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        width: "100vw",
+        zIndex: 0,
+      }}
+    >
       <Search panTo={panTo}/>
       <Locate panTo={panTo}/>
 
@@ -109,103 +116,17 @@ export default function GoogleMaps() {
               setSelected(null);
             }}
           >
-            <div style={{maxWidth: 176}}>
-              <h2>RESTAURANT</h2>
-              <p>Retro style place with a sexy food selection. Can't wait to taste the fancy looking pasta dishes!</p>
-              {/*<p>{formatRelative(selected.time, new Date())}</p>*/}
-              <div style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                width: "100%",
-              }}>
-                <Button color="secondary"
-                        onClick={() => {
-                          deleteSpot(selected.id)
-                            .then(() => {
-                              setSelected(undefined);
-                              setSpots(spots.filter(spot => spot.id !== selected.id))
-                            });
-                        }}
-                >DELETE</Button>
-              </div>
-            </div>
+            <InfoWindowContent
+              props={{
+                setSelected: setSelected,
+                selected: selected,
+                setSpots: setSpots,
+                spots: spots
+              }}
+            />
           </InfoWindow>
         ) : null}
       </GoogleMap>
-    </div>
-  );
-}
-
-// find current position and center screen accordingly
-function Locate({panTo}) {
-  return (
-    <Button
-      className="locate"
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null,
-        );
-      }}
-    >
-      <img src="svg/myLocation.svg" alt="some text"/>
-    </Button>
-  );
-}
-
-// search bar
-function Search({panTo}) {
-  const {
-    ready,
-    value,
-    suggestions: {status, data},
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      location: {lat: () => 50.937531, lng: () => 6.960279},
-      radius: 200 * 1000,
-    },
-  });
-
-  return (
-    <div className="search">
-      <Combobox
-        onSelect={async (address) => {
-          setValue(address, false);
-          clearSuggestions();
-          try {
-            const results = await getGeocode({address});
-            const {lat, lng} = await getLatLng(results[0]);
-            panTo({lat, lng});
-          } catch (error) {
-            console.log("error!");
-          }
-        }}
-      >
-        <ComboboxInput
-          value={value}
-          onChange={(event) => {
-            setValue(event.target.value);
-          }}
-          disabled={!ready}
-          placeholder="Enter an address"
-        />
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-            data.map(({id, description}) => (
-              <ComboboxOption key={id} value={description}/>
-            ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
     </div>
   );
 }
