@@ -8,6 +8,7 @@ import {SpotMarker} from "./googleMapsUtils/SpotMarker";
 import Locate from "./components/Locate";
 import Search from "./components/Search";
 import InfoWindowContent from "./components/InfoWindowContent";
+import SpotSideBar from "./components/SpotSideBar";
 
 // to use Google Places
 const libraries = ["places"]
@@ -93,6 +94,7 @@ export default function GoogleMaps() {
     >
       <Search panTo={panTo}/>
       <Locate panTo={panTo}/>
+      <SpotSideBar/>
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
