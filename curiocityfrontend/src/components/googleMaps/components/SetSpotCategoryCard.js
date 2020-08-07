@@ -20,7 +20,7 @@ export default function SetSpotCategoryCard() {
           style={{
             width: 350,
             height: 445,
-            border: "1px solid #545A61",
+            border: "2px solid #545A61",
             borderRadius: 10,
             backgroundColor: "white",
           }}
