@@ -5,6 +5,7 @@ import CreateAccount from "./pages/CreateAccount";
 import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
 import SetSpotCategoryCard from "./components/googleMaps/components/SetSpotCategoryCard";
+import SpotSideBar from "./components/googleMaps/components/SpotSideBar";
 
 function App() {
 
@@ -12,6 +13,9 @@ function App() {
     <Switch>
       <Route exact path={"/setSpotCategoryCard"}>
         <SetSpotCategoryCard/>
+      </Route>
+      <Route exact path={"/spotSideBar"}>
+        <SpotSideBar/>
       </Route>
       <Route exact path={"/createAccount"}>
         <CreateAccount/>
