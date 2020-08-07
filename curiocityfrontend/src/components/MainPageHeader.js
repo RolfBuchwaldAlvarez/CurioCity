@@ -2,15 +2,15 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Box from "@material-ui/core/Box";
 import MainPageAppDrawerLeft from "./MainPageAppDrawerLeft";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "absolute",
-    height: "auto",
+    flexGrow: 1,
     width: "100%",
+    height: "auto",
+    position: "absolute",
+    top: 0,
     zIndex: 10,
   },
   appBar: {
@@ -29,33 +29,29 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  image: {
-    marginRight: "10%",
-    width: "50%",
-  },
 }));
 
 export default function MainPageHeader() {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar disableGutters={true}>
-          <Box className={classes.wrapperBox} display="flex" flexDirection="row">
-            <Box className={classes.box1} display="flex" flexDirection="row" justifyContent="flex-start"
-                 alignItems="center">
-              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MainPageAppDrawerLeft/>
-              </IconButton>
-            </Box>
-            <Box className={classes.box2} display="flex" flexDirection="row" justifyContent="flex-end"
-                 alignItems="center">
-              {/*<img className={classes.image} src="/svg/curiocityLogo.svg" alt="curiocity"/>*/}
-            </Box>
-          </Box>
+          <MainPageAppDrawerLeft/>
+          <img
+            className={classes.image}
+            src="/svg/curiocityLogo.svg"
+            alt="curiocity"
+            style={{
+              height: "35px",
+              width: "auto",
+              position: "absolute",
+              right: 20,
+            }}
+          />
         </Toolbar>
       </AppBar>
-    </Box>
+    </div>
   );
 }
