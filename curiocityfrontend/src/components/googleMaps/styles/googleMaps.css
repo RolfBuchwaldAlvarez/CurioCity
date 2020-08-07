@@ -9,7 +9,7 @@
 
 .locate {
   position: absolute;
-  top: 5rem;
+  top: 75px;
   right: 2%;
   background: none;
   border: none;
@@ -17,6 +17,5 @@
 }
 
 .locate img {
-  width: 30px;
   cursor: pointer;
 }
