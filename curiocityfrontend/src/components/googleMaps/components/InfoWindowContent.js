@@ -22,7 +22,7 @@ export default function InfoWindowContent({props}) {
           paddingLeft: 10,
         }}
       >
-        <img src={"/svg/" + url} alt="spot icon" width="20" height="20"/>
+        <img src={url} alt="spot icon" width="20" height="20"/>
         <h2
           style={{
             paddingLeft: 10,
