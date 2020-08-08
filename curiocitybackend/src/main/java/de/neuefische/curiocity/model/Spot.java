@@ -11,10 +11,10 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Spot {
   private String id;
-  @NotNull
-  private String category;
   private double lat;
   private double lng;
+  @NotNull
+  private String category;
+  private String title;
   private String description;
-  /*private String timeStamp;*/
 }
