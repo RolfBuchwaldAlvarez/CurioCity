@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 
 export default function SetSpotCategoryCard() {
   return (
-    <>
+    /*<>
       <div
         style={{
           display: "flex",
@@ -15,14 +15,18 @@ export default function SetSpotCategoryCard() {
           background: "none",
           zIndex: 100,
         }}
-      >
+      >*/
         <div
           style={{
-            width: 350,
+            position: "absolute",
+            top: 150,
+            left: 11,
+            width: 351,
             height: 445,
             border: "2px solid #545A61",
             borderRadius: 10,
             backgroundColor: "white",
+            zIndex: 100,
           }}
         >
 
@@ -163,7 +167,7 @@ export default function SetSpotCategoryCard() {
             </Button>
           </div>
         </div>
-      </div>
-    </>
+    /*</div>
+  </>*/
   );
 }

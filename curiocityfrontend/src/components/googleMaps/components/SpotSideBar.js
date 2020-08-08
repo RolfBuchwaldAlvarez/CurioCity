@@ -5,7 +5,7 @@ export default function SpotSideBar() {
     <div
       style={{
         position: "absolute",
-        right: "2%",
+        right: 9,
         top: 360,
         display: "flex",
         flexDirection: "column",
