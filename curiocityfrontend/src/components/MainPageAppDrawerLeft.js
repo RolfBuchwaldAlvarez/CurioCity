@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   },
   drawerPaper: {
     height: "100%",
-    backgroundColor: "rgba(94,114,141,1)",
+    backgroundColor: "rgba(94,114,141,0.6)",
   },
 }));
 
@@ -52,7 +52,12 @@ export default function AppDrawerLeft(props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List style={{color: "#f50057"}}>
+      <List
+        style={{
+          paddingTop: 55,
+          color: "rgba(255,255,255,1)"
+        }}
+      >
         {navLinks.map((linkItem,) => (
 
           <ListItem
@@ -75,7 +80,7 @@ export default function AppDrawerLeft(props) {
 
     <React.Fragment key={"left"}>
       <Button onClick={toggleDrawer("left", true)}>
-        {<MenuIcon style={{color: '#FFFFFF'}}/>}
+        {<MenuIcon style={{color: "rgba(255,255,255,1)"}}/>}
       </Button>
       <div className={classes.MuiDrawer}>
         <Drawer
