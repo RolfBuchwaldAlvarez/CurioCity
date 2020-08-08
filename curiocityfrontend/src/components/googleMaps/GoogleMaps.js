@@ -4,20 +4,19 @@ import {GoogleMap, InfoWindow, useLoadScript} from "@react-google-maps/api";
 import MapStyles from "./styles/MapStyles";
 import "@reach/combobox/styles.css";
 import {getAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
-import {SpotMarker} from "./googleMapsUtils/SpotMarker";
+import {SpotMarker} from "./utils/SpotMarker";
 import Locate from "./components/Locate";
 import Search from "./components/Search";
 import InfoWindowContent from "./components/InfoWindowContent";
 import SpotSideBar from "./components/SpotSideBar";
-import SetSpotCategoryCard from "./components/SetSpotCategoryCard";
 
 // to use Google Places
 const libraries = ["places"]
 
 // set map size
 const mapContainerStyle = {
-  width: "375px",
-  height: "667px",
+  width: "100vw",
+  height: "100vh",
 };
 
 // set Cologne, Germany as starting point
@@ -96,7 +95,7 @@ export default function GoogleMaps() {
       <Search panTo={panTo}/>
       <Locate panTo={panTo}/>
       <SpotSideBar/>
-      <SetSpotCategoryCard/>
+      {/*<SetSpotCategoryCard/>*/}
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
