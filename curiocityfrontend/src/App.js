@@ -6,6 +6,7 @@ import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
 import SetSpotCategoryCard from "./components/googleMaps/components/SetSpotCategoryCard";
 import SpotSideBar from "./components/googleMaps/components/SpotSideBar";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
         <GoogleMaps/>
       </Route>
       <Route exact path={"/"}>
-        <GoogleMaps/>
+        <LandingPage/>
       </Route>
     </Switch>
   );
