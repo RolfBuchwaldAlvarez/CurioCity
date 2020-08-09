@@ -1,7 +1,63 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 
-export default function SetSpotCategoryCard() {
+export default function SetSpotCategoryCard({transferObject}) {
+  const [fetchObject, setFetchObject] = React.useState({});
+
+  const [spotColorGreen, setSpotColorGreen] = React.useState("/svg/greyRestaurantSpot.svg");
+
+  const changeSpotColorOnClickToGreen = () => {
+    if (spotColorGreen === "/svg/greyRestaurantSpot.svg") {
+      setSpotColorGreen("/svg/greenIconSpot.svg");
+    } else {
+      setSpotColorGreen("/svg/greyRestaurantSpot.svg");
+    }
+  };
+
+  const [spotColorRed, setSpotColorRed] = React.useState("/svg/greyBarSpot.svg");
+  const changeSpotColorOnClickToRed = () => {
+    if (spotColorRed === "/svg/greyBarSpot.svg") {
+      setSpotColorRed("/svg/redIconSpot.svg");
+    } else {
+      setSpotColorRed("/svg/greyBarSpot.svg");
+    }
+  };
+
+  const [spotColorYellow, setSpotColorYellow] = React.useState("/svg/greyStoreSpot.svg");
+  const changeSpotColorOnClickToYellow = () => {
+    if (spotColorYellow === "/svg/greyStoreSpot.svg") {
+      setSpotColorYellow("/svg/yellowIconSpot.svg");
+    } else {
+      setSpotColorYellow("/svg/greyStoreSpot.svg");
+    }
+  };
+
+  const [spotColorPurple, setSpotColorPurple] = React.useState("/svg/greyConcertSpot.svg");
+  const changeSpotColorOnClickToPurple = () => {
+    if (spotColorPurple === "/svg/greyConcertSpot.svg") {
+      setSpotColorPurple("/svg/purpleIconSpot.svg");
+    } else {
+      setSpotColorPurple("/svg/greyConcertSpot.svg");
+    }
+  };
+
+  const [spotColorBlue, setSpotColorBlue] = React.useState("/svg/greyRandomSpot.svg");
+  const changeSpotColorOnClickToBlue = () => {
+    if (spotColorBlue === "/svg/greyRandomSpot.svg") {
+      setSpotColorBlue("/svg/blueIconSpot.svg");
+    } else {
+      setSpotColorBlue("/svg/greyRandomSpot.svg");
+    }
+  };
+
+  const newSpot = {
+    lat: 6.02340,
+    lng: 50.000034,
+    category: "restaurant",
+    title: "Giovanni's Pizza Place",
+    description: "blablabla",
+  }
+
   return (
     /*<>
       <div
@@ -58,8 +114,10 @@ export default function SetSpotCategoryCard() {
             }}
           >
             <img
-              src="/svg/greenIconSpot.svg"
+              id="green"
+              src={spotColorGreen}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToGreen}
               width="50px"
               height="50px"
               style={{
@@ -67,8 +125,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/rediconSpot.svg"
+              id="red"
+              src={spotColorRed}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToRed}
               width="50px"
               height="50px"
               style={{
@@ -76,8 +136,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/yellowIconSpot.svg"
+              id="yellow"
+              src={spotColorYellow}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToYellow}
               width="50px"
               height="50px"
               style={{
@@ -85,8 +147,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/purpleIconSpot.svg"
+              id="purple"
+              src={spotColorPurple}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToPurple}
               width="50px"
               height="50px"
               style={{
@@ -94,8 +158,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/blueIconSpot.svg"
+              id="blue"
+              src={spotColorBlue}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToBlue}
               width="50px"
               height="50px"
               style={{
@@ -126,11 +192,11 @@ export default function SetSpotCategoryCard() {
           {/* description */}
           <div>
             <form>
-              <label for="description"
-                     style={{
-                       color: "#545A61",
-                       paddingLeft: 16,
-                     }}
+              <label
+                style={{
+                  color: "#545A61",
+                  paddingLeft: 16,
+                }}
               >
                 Description
               </label>
@@ -171,3 +237,38 @@ export default function SetSpotCategoryCard() {
   </>*/
   );
 }
+
+const spotCombos = [
+  {
+    id: "green",
+    urlGreyIcon: "/svg/greyRestaurantSpot.svg",
+    urlColoredIcon: "/svg/greenIconSpot.svg"
+  },
+  {
+    id: "red",
+    urlGreyIcon: "/svg/greyBarSpot.svg",
+    urlColoredIcon: "/svg/redIconSpot.svg"
+  },
+  {
+    id: "yellow",
+    urlGreyIcon: "/svg/greyStoreSpot.svg",
+    urlColoredIcon: "/svg/yellowIconSpot.svg"
+  },
+  {
+    id: "purple",
+    urlGreyIcon: "/svg/greyConcertSpot.svg",
+    urlColoredIcon: "/svg/purpleIconSpot.svg"
+  },
+  {
+    id: "blue",
+    urlGreyIcon: "/svg/greyRandomSpot.svg",
+    urlColoredIcon: "/svg/blueIconSpot.svg"
+  }
+]
+
+/*
+function getIconUrl(id) {
+  switch (id) {
+    case "green"
+  }
+}*/
