@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Button from "@material-ui/core/Button";
 
 export default function SetSpotCategoryCard({transferObject}) {
   const [fetchObject, setFetchObject] = React.useState({});
+  useEffect(() => {
+    console.log(fetchObject)
+  }, [fetchObject]);
 
   const [spotColorGreen, setSpotColorGreen] = React.useState("/svg/greyRestaurantSpot.svg");
 
   const changeSpotColorOnClickToGreen = () => {
     if (spotColorGreen === "/svg/greyRestaurantSpot.svg") {
       setSpotColorGreen("/svg/greenIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "restaurant"
+      });
     } else {
       setSpotColorGreen("/svg/greyRestaurantSpot.svg");
     }
@@ -18,6 +24,9 @@ export default function SetSpotCategoryCard({transferObject}) {
   const changeSpotColorOnClickToRed = () => {
     if (spotColorRed === "/svg/greyBarSpot.svg") {
       setSpotColorRed("/svg/redIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "bar"
+      });
     } else {
       setSpotColorRed("/svg/greyBarSpot.svg");
     }
@@ -27,6 +36,9 @@ export default function SetSpotCategoryCard({transferObject}) {
   const changeSpotColorOnClickToYellow = () => {
     if (spotColorYellow === "/svg/greyStoreSpot.svg") {
       setSpotColorYellow("/svg/yellowIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "store"
+      });
     } else {
       setSpotColorYellow("/svg/greyStoreSpot.svg");
     }
@@ -36,6 +48,9 @@ export default function SetSpotCategoryCard({transferObject}) {
   const changeSpotColorOnClickToPurple = () => {
     if (spotColorPurple === "/svg/greyConcertSpot.svg") {
       setSpotColorPurple("/svg/purpleIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "concert"
+      });
     } else {
       setSpotColorPurple("/svg/greyConcertSpot.svg");
     }
@@ -45,6 +60,9 @@ export default function SetSpotCategoryCard({transferObject}) {
   const changeSpotColorOnClickToBlue = () => {
     if (spotColorBlue === "/svg/greyRandomSpot.svg") {
       setSpotColorBlue("/svg/blueIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "random"
+      });
     } else {
       setSpotColorBlue("/svg/greyRandomSpot.svg");
     }
