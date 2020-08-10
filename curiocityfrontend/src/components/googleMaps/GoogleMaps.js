@@ -62,20 +62,21 @@ export default function GoogleMaps() {
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
 
-  const onMapClick = (event) => {
+  const onMapClick = async (event) => {
     if (!createNewSpot.visible) {
-      setTransferObject({
+      await setTransferObject({
         lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-        category: "",
-        description: ""
-      });
+        lng: event.latLng.lng()
+      })
       setCreateNewSpot({visible: true});
-      console.log(transferObject);
     } else {
       setCreateNewSpot({visible: false});
     }
-  }
+  };
+
+  useEffect(() => {
+    console.log(transferObject);
+  }, [transferObject])
 
   /* const onMapClick = React.useCallback((event) => {
     putSpot("concert", event.latLng.lat(), event.latLng.lng())
