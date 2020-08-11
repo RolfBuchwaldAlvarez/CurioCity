@@ -48,7 +48,26 @@ export default function LandingPage() {
             height: 80,
             width: "auto",
             zIndex: 50,
-          }}/>
+          }}
+        />
+        <p
+          style={{
+            position: "absolute",
+            top: 220,
+            left: "14%",
+            color: "#F5F5F5",
+            fontSize: 40,
+            height: 90,
+            width: 210,
+            zIndex: 30,
+            border: "2px solid #F5F5F5",
+            padding: "40px 20px 0px 35px",
+            margin: 0,
+            backgroundColor: "rgba(255,255,255,0.4)",
+          }}
+        >
+          WELCOME
+        </p>
         <Link to="/login">
           <Button
             variant="contained"
