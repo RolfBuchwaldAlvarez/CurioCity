@@ -58,6 +58,7 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
   };
 
   const [spotColorBlue, setSpotColorBlue] = React.useState("/svg/greyRandomSpot.svg");
+
   const changeSpotColorOnClickToBlue = () => {
     if (spotColorBlue === "/svg/greyRandomSpot.svg") {
       setSpotColorBlue("/svg/blueIconSpot.svg");
@@ -69,21 +70,12 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
     }
   };
 
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-
   function handleTitleChange(event) {
-    const value = event.target.value;
-    console.log(value);
-    setTitle(value);
-    setFetchObject({...fetchObject, title: title});
+    setFetchObject({...fetchObject, title: event.target.value});
   }
 
   function handleDescriptionChange(event) {
-    const value = event.target.value;
-    console.log(value);
-    setDescription(value);
-    setFetchObject({...fetchObject, description: description});
+    setFetchObject({...fetchObject, description: event.target.value});
   }
 
   const putFetchOnPushingCreateButton = () => {
