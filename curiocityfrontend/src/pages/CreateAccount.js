@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
   container: {
     height: "100%",
     width: "100%",
-    backgroundImage: "url(/images/LoginBGDouble.png)",
+    backgroundImage: "url(/images/landingPageImage2.png)",
     backgroundPosition: "center", /* Center the image */
     backgroundRepeat: "no-repeat", /* Do not repeat the image */
     backgroundSize: "cover", /* Resize the background image to cover the entire container */
 
   },
   layerInBetweenBox: {
-    backgroundColor: "rgba(91,48,48,0.3)",
+    backgroundColor: "rgba(91,48,48,0.1)",
     height: "100%",
     width: "100%",
   },
@@ -67,6 +67,18 @@ export default function CreateAccount() {
             alignItems="center"
             className={classes.wrapperBox}
           >
+            <img
+              src="/svg/curiocityLogo.svg"
+              alt="logo"
+              style={{
+                position: "absolute",
+                top: 60,
+                left: "13%",
+                height: 80,
+                width: "auto",
+                zIndex: 50,
+              }}
+            />
             <Typography
               className={classes.typo}
             >
