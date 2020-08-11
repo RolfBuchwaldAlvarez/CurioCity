@@ -19,7 +19,7 @@ function App() {
         <SpotSideBar/>
       </Route>
       <Route exact path={"/createAccount"}>
-        <CreateAccount/>
+          <CreateAccount/>
       </Route>
       <Route exact path={"/login"}>
         <UserLogin/>

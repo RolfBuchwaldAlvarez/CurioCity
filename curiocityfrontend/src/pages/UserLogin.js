@@ -1,9 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import PasswordLoginTextfield from "../components/PasswordLoginTextfield";
+import UserIDTextfield from "../components/UserIDTextfield";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -70,23 +71,8 @@ export default function UserLogin() {
                 zIndex: 50,
               }}
             />
-            <TextField
-              error
-              id="outlined-error"
-              label="User ID"
-              defaultValue=""
-              variant="outlined"
-              className={classes.textPrimary}
-              style={{}}
-            />
-            <TextField
-              error
-              id="outlined-error"
-              label="Password"
-              defaultValue=""
-              variant="outlined"
-              className={classes.textPrimary}
-            />
+            <PasswordLoginTextfield/>
+            <UserIDTextfield/>
             <Link to="/main">
               <Button variant="contained" color="secondary" className={classes.button}>
                 LOGIN
