@@ -19,7 +19,7 @@ export default function LandingPage() {
         }}
       >
         <img
-          src="/images/landingPageImage.png"
+          src="/images/landingPageImage2.png"
           alt="city"
           style={{
             height: "100%",
@@ -34,7 +34,7 @@ export default function LandingPage() {
             left: 0,
             height: "100%",
             width: "100%",
-            backgroundColor: "rgba(177,166,201,0.3)",
+            backgroundColor: "rgba(91,48,48,0.1)",
             zIndex: 25,
           }}
         />
