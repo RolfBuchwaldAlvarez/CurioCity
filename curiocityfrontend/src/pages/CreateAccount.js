@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
   wrapperBox: {
     backgroundColor: "rgba(32,65,90,0.6)",
     width: "100%",
-    height: "72%",
+    height: "50%",
   },
   typo: {
     color: "white",
     fontSize: "24px",
-    margin: theme.spacing(2),
+    margin: theme.spacing(3),
   },
   textfieldBox: {
     backgroundColor: "rgba(255,255,255,0.1)",
