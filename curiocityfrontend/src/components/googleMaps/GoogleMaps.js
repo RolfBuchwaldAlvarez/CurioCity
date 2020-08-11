@@ -78,15 +78,6 @@ export default function GoogleMaps() {
     console.log(transferObject);
   }, [transferObject])
 
-  /* const onMapClick = React.useCallback((event) => {
-    putSpot("concert", event.latLng.lat(), event.latLng.lng())
-      .then((spot) => {
-        setSpots((current) => [
-          ...current, spot
-        ])
-      });
-  }, []);*/
-
   // useRef() opposite of useState (keeps state without re-rendering)
   // re-center map to new position + prevent re-render
   const mapRef = React.useRef();
@@ -129,13 +120,18 @@ export default function GoogleMaps() {
         onLoad={onMapLoad}
       >
 
-        // creates all spots
+        {/* creates all spots */}
         {spots.map(spot => (
           <SpotMarker key={spot.id} spot={spot} setSelected={setSelected}/>
         ))}
 
-        // renders Create New Spot window depending on value of visible
-        {createNewSpot.visible ? <SetSpotCategoryCard transferObject={transferObject}/> : null}
+        {/* renders Create New Spot window depending on value of visible */}
+        {createNewSpot.visible ?
+          <SetSpotCategoryCard
+            transferObject={transferObject}
+            setSpots={setSpots}
+            setCreateNewSpot={setCreateNewSpot}
+          /> : null}
 
         {/* info-window function for selected spot */}
         {selected ? (
