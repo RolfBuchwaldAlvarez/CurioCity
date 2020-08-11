@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import Box from "@material-ui/core/Box";
-import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import UsernameTextfield from "../components/UsernameTextfield";
+import PasswordTextfield from "../components/PasswordTextfield";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -14,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center", /* Center the image */
     backgroundRepeat: "no-repeat", /* Do not repeat the image */
     backgroundSize: "cover", /* Resize the background image to cover the entire container */
-
   },
   layerInBetweenBox: {
     backgroundColor: "rgba(91,48,48,0.1)",
@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     border: "solid white 1px",
     padding: theme.spacing(2),
+    width: "80%",
   },
   textfield: {
     marginBottom: theme.spacing(2),
@@ -91,17 +92,8 @@ export default function CreateAccount() {
               alignItems="center"
               className={classes.textfieldBox}
             >
-              <TextField
-                rid="standard-basic"
-                label="Username"
-                className={classes.textfield}
-              />
-              <TextField
-                rid="standard-basic"
-                label="Password"
-                type="password"
-                className={classes.textfield}
-              />
+              <UsernameTextfield/>
+              <PasswordTextfield/>
             </Box>
             <Link to="/login">
               <Button
@@ -118,3 +110,4 @@ export default function CreateAccount() {
     </>
   );
 }
+
