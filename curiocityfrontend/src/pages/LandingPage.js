@@ -53,15 +53,15 @@ export default function LandingPage() {
         <p
           style={{
             position: "absolute",
-            top: 240,
-            left: "15%",
+            top: 220,
+            left: "14%",
             color: "#F5F5F5",
             fontSize: 40,
-            height: 80,
-            width: 200,
+            height: 90,
+            width: 210,
             zIndex: 30,
             border: "2px solid #F5F5F5",
-            padding: "25px 30px 0px 30px",
+            padding: "40px 20px 0px 35px",
             margin: 0,
             backgroundColor: "rgba(255,255,255,0.4)",
           }}
