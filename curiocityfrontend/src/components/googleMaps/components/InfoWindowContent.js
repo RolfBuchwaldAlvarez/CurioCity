@@ -11,6 +11,7 @@ export default function InfoWindowContent({props}) {
     <div
       style={{
         maxWidth: 200,
+        minWidth: 200,
         border: "2px, solid, #545A61",
       }}>
       <div
