@@ -206,7 +206,7 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
               }}
             />
           </div>
-
+g
           {/* description */}
           <div>
             <form>
@@ -219,8 +219,8 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
                 Description
               </label>
               <br/>
-              <input
-                type="text"
+              <textarea
+                cols
                 name="description"
                 placeholder="Write here..."
                 onChange={handleDescriptionChange}
@@ -232,6 +232,7 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
                   margin: "5px 0px 10px 15px",
                   padding: "10px 5px 160px 10px",
                   width: 305,
+                  height: 10,
                 }}
               />
             </form>
