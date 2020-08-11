@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import Button from "@material-ui/core/Button";
+import {putSpot} from "../../../utils/fetchSpotsFuncs";
 
-export default function SetSpotCategoryCard({transferObject}) {
+export default function SetSpotCategoryCard({transferObject, setSpots, setCreateNewSpot}) {
   const [fetchObject, setFetchObject] = React.useState({});
   useEffect(() => {
     console.log(fetchObject)
@@ -68,36 +69,42 @@ export default function SetSpotCategoryCard({transferObject}) {
     }
   };
 
-  const newSpot = {
-    lat: 6.02340,
-    lng: 50.000034,
-    category: "restaurant",
-    title: "Giovanni's Pizza Place",
-    description: "blablabla",
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+
+  function handleTitleChange(event) {
+    const value = event.target.value;
+    console.log(value);
+    setTitle(value);
+    setFetchObject({...fetchObject, title: title});
   }
 
+  function handleDescriptionChange(event) {
+    const value = event.target.value;
+    console.log(value);
+    setDescription(value);
+    setFetchObject({...fetchObject, description: description});
+  }
+
+  const putFetchOnPushingCreateButton = () => {
+    putSpot(fetchObject)
+      .then((spot) => {
+        setSpots((current) => [
+          ...current, spot
+        ])
+      });
+    setCreateNewSpot({visible: false});
+  };
+
   return (
-    /*<>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          width: "100vw",
-          padding: 0,
-          background: "none",
-          zIndex: 100,
-        }}
-      >*/
-        <div
-          style={{
-            position: "absolute",
-            top: 150,
-            left: 11,
-            width: 351,
-            height: 445,
-            border: "2px solid #545A61",
+    <div
+      style={{
+        position: "absolute",
+        top: 150,
+        left: 11,
+        width: 351,
+        height: 445,
+        border: "2px solid #545A61",
             borderRadius: 10,
             backgroundColor: "white",
             zIndex: 100,
@@ -195,6 +202,7 @@ export default function SetSpotCategoryCard({transferObject}) {
               type="text"
               name="title"
               placeholder="Title"
+              onChange={handleTitleChange}
               style={{
                 color: "#545A61",
                 backgroundColor: "white",
@@ -223,6 +231,7 @@ export default function SetSpotCategoryCard({transferObject}) {
                 type="text"
                 name="description"
                 placeholder="Write here..."
+                onChange={handleDescriptionChange}
                 style={{
                   color: "#545A61",
                   backgroundColor: "white",
@@ -237,56 +246,19 @@ export default function SetSpotCategoryCard({transferObject}) {
           </div>
 
           {/* button */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              color: "#545A61",
-              paddingRight: 14,
-              paddingTop: 1,
-            }}
-          >
-            <Button variant="contained" color="secondary" style={{width: "80px"}}>
-              CREATE
-            </Button>
-          </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          color: "#545A61",
+          paddingRight: 14,
+          paddingTop: 1,
+        }}
+      >
+        <Button onClick={putFetchOnPushingCreateButton} variant="contained" color="secondary" style={{width: "80px"}}>
+          CREATE
+        </Button>
+      </div>
         </div>
-    /*</div>
-  </>*/
   );
 }
-
-const spotCombos = [
-  {
-    id: "green",
-    urlGreyIcon: "/svg/greyRestaurantSpot.svg",
-    urlColoredIcon: "/svg/greenIconSpot.svg"
-  },
-  {
-    id: "red",
-    urlGreyIcon: "/svg/greyBarSpot.svg",
-    urlColoredIcon: "/svg/redIconSpot.svg"
-  },
-  {
-    id: "yellow",
-    urlGreyIcon: "/svg/greyStoreSpot.svg",
-    urlColoredIcon: "/svg/yellowIconSpot.svg"
-  },
-  {
-    id: "purple",
-    urlGreyIcon: "/svg/greyConcertSpot.svg",
-    urlColoredIcon: "/svg/purpleIconSpot.svg"
-  },
-  {
-    id: "blue",
-    urlGreyIcon: "/svg/greyRandomSpot.svg",
-    urlColoredIcon: "/svg/blueIconSpot.svg"
-  }
-]
-
-/*
-function getIconUrl(id) {
-  switch (id) {
-    case "green"
-  }
-}*/
