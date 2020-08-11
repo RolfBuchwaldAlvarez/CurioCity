@@ -42,7 +42,7 @@ export default function AppDrawerLeft(props) {
   };
 
   const navLinks = [
-    {text: "Logout", link: "/login"}
+    {text: "Logout", link: "/"}
   ]
 
   const list = (anchor) => (

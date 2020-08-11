@@ -1,6 +1,4 @@
 // get all green spots
-import React from "react";
-
 export async function getAllSpots() {
   const response = await fetch('/api/spots', {
     method: 'GET',
@@ -15,13 +13,13 @@ export async function getAllSpots() {
 }
 
 // add single spot
-export function putSpot(category, lat, lng) {
+export function putSpot(fetchObject) {
   return fetch('/api/spots', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({category, lat, lng}),
+    body: JSON.stringify(fetchObject),
   }).then((response) => {
     if (response.status !== 200) {
       throw new Error("failed to fetch data");

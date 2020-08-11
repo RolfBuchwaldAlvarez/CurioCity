@@ -1,29 +1,110 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Button from "@material-ui/core/Button";
+import {putSpot} from "../../../utils/fetchSpotsFuncs";
 
-export default function SetSpotCategoryCard() {
+export default function SetSpotCategoryCard({transferObject, setSpots, setCreateNewSpot}) {
+  const [fetchObject, setFetchObject] = React.useState({});
+  useEffect(() => {
+    console.log(fetchObject)
+  }, [fetchObject]);
+
+  const [spotColorGreen, setSpotColorGreen] = React.useState("/svg/greyRestaurantSpot.svg");
+
+  const changeSpotColorOnClickToGreen = () => {
+    if (spotColorGreen === "/svg/greyRestaurantSpot.svg") {
+      setSpotColorGreen("/svg/greenIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "restaurant"
+      });
+    } else {
+      setSpotColorGreen("/svg/greyRestaurantSpot.svg");
+    }
+  };
+
+  const [spotColorRed, setSpotColorRed] = React.useState("/svg/greyBarSpot.svg");
+  const changeSpotColorOnClickToRed = () => {
+    if (spotColorRed === "/svg/greyBarSpot.svg") {
+      setSpotColorRed("/svg/redIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "bar"
+      });
+    } else {
+      setSpotColorRed("/svg/greyBarSpot.svg");
+    }
+  };
+
+  const [spotColorYellow, setSpotColorYellow] = React.useState("/svg/greyStoreSpot.svg");
+  const changeSpotColorOnClickToYellow = () => {
+    if (spotColorYellow === "/svg/greyStoreSpot.svg") {
+      setSpotColorYellow("/svg/yellowIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "store"
+      });
+    } else {
+      setSpotColorYellow("/svg/greyStoreSpot.svg");
+    }
+  };
+
+  const [spotColorPurple, setSpotColorPurple] = React.useState("/svg/greyConcertSpot.svg");
+  const changeSpotColorOnClickToPurple = () => {
+    if (spotColorPurple === "/svg/greyConcertSpot.svg") {
+      setSpotColorPurple("/svg/purpleIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "concert"
+      });
+    } else {
+      setSpotColorPurple("/svg/greyConcertSpot.svg");
+    }
+  };
+
+  const [spotColorBlue, setSpotColorBlue] = React.useState("/svg/greyRandomSpot.svg");
+  const changeSpotColorOnClickToBlue = () => {
+    if (spotColorBlue === "/svg/greyRandomSpot.svg") {
+      setSpotColorBlue("/svg/blueIconSpot.svg");
+      setFetchObject({
+        ...transferObject, category: "random"
+      });
+    } else {
+      setSpotColorBlue("/svg/greyRandomSpot.svg");
+    }
+  };
+
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+
+  function handleTitleChange(event) {
+    const value = event.target.value;
+    console.log(value);
+    setTitle(value);
+    setFetchObject({...fetchObject, title: title});
+  }
+
+  function handleDescriptionChange(event) {
+    const value = event.target.value;
+    console.log(value);
+    setDescription(value);
+    setFetchObject({...fetchObject, description: description});
+  }
+
+  const putFetchOnPushingCreateButton = () => {
+    putSpot(fetchObject)
+      .then((spot) => {
+        setSpots((current) => [
+          ...current, spot
+        ])
+      });
+    setCreateNewSpot({visible: false});
+  };
+
   return (
-    /*<>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          width: "100vw",
-          padding: 0,
-          background: "none",
-          zIndex: 100,
-        }}
-      >*/
-        <div
-          style={{
-            position: "absolute",
-            top: 150,
-            left: 11,
-            width: 351,
-            height: 445,
-            border: "2px solid #545A61",
+    <div
+      style={{
+        position: "absolute",
+        top: 150,
+        left: 11,
+        width: 351,
+        height: 445,
+        border: "2px solid #545A61",
             borderRadius: 10,
             backgroundColor: "white",
             zIndex: 100,
@@ -58,8 +139,10 @@ export default function SetSpotCategoryCard() {
             }}
           >
             <img
-              src="/svg/greenIconSpot.svg"
+              id="green"
+              src={spotColorGreen}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToGreen}
               width="50px"
               height="50px"
               style={{
@@ -67,8 +150,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/rediconSpot.svg"
+              id="red"
+              src={spotColorRed}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToRed}
               width="50px"
               height="50px"
               style={{
@@ -76,8 +161,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/yellowIconSpot.svg"
+              id="yellow"
+              src={spotColorYellow}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToYellow}
               width="50px"
               height="50px"
               style={{
@@ -85,8 +172,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/purpleIconSpot.svg"
+              id="purple"
+              src={spotColorPurple}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToPurple}
               width="50px"
               height="50px"
               style={{
@@ -94,8 +183,10 @@ export default function SetSpotCategoryCard() {
               }}
             />
             <img
-              src="/svg/blueIconSpot.svg"
+              id="blue"
+              src={spotColorBlue}
               alt="greenSpot"
+              onClick={changeSpotColorOnClickToBlue}
               width="50px"
               height="50px"
               style={{
@@ -111,6 +202,7 @@ export default function SetSpotCategoryCard() {
               type="text"
               name="title"
               placeholder="Title"
+              onChange={handleTitleChange}
               style={{
                 color: "#545A61",
                 backgroundColor: "white",
@@ -126,11 +218,11 @@ export default function SetSpotCategoryCard() {
           {/* description */}
           <div>
             <form>
-              <label for="description"
-                     style={{
-                       color: "#545A61",
-                       paddingLeft: 16,
-                     }}
+              <label
+                style={{
+                  color: "#545A61",
+                  paddingLeft: 16,
+                }}
               >
                 Description
               </label>
@@ -139,6 +231,7 @@ export default function SetSpotCategoryCard() {
                 type="text"
                 name="description"
                 placeholder="Write here..."
+                onChange={handleDescriptionChange}
                 style={{
                   color: "#545A61",
                   backgroundColor: "white",
@@ -153,21 +246,19 @@ export default function SetSpotCategoryCard() {
           </div>
 
           {/* button */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              color: "#545A61",
-              paddingRight: 14,
-              paddingTop: 1,
-            }}
-          >
-            <Button variant="contained" color="secondary" style={{width: "80px"}}>
-              CREATE
-            </Button>
-          </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          color: "#545A61",
+          paddingRight: 14,
+          paddingTop: 1,
+        }}
+      >
+        <Button onClick={putFetchOnPushingCreateButton} variant="contained" color="secondary" style={{width: "80px"}}>
+          CREATE
+        </Button>
+      </div>
         </div>
-    /*</div>
-  </>*/
   );
 }

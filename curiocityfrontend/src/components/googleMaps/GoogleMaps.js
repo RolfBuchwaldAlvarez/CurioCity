@@ -3,12 +3,13 @@ import "./styles/googleMaps.css";
 import {GoogleMap, InfoWindow, useLoadScript} from "@react-google-maps/api";
 import MapStyles from "./styles/MapStyles";
 import "@reach/combobox/styles.css";
-import {getAllSpots, putSpot} from "../../utils/fetchSpotsFuncs";
+import {getAllSpots} from "../../utils/fetchSpotsFuncs";
 import {SpotMarker} from "./utils/SpotMarker";
 import Locate from "./components/Locate";
 import Search from "./components/Search";
 import InfoWindowContent from "./components/InfoWindowContent";
 import SpotSideBar from "./components/SpotSideBar";
+import SetSpotCategoryCard from "./components/SetSpotCategoryCard";
 
 // to use Google Places
 const libraries = ["places"]
@@ -48,20 +49,34 @@ export default function GoogleMaps() {
   // opens info-window for selected spot
   const [selected, setSelected] = React.useState(null);
 
+  // opens create-new spot window
+  const [createNewSpot, setCreateNewSpot] = React.useState({visible: false});
+
+  // to safe newly created object
+  const [transferObject, setTransferObject] = React.useState({})
+
   useEffect(() => {
     getAllSpots().then(data => setSpots(data));
   }, [])
 
   // prevent map to trigger a re-render
   // useCallback creates a function which always keeps the same value unless deps are changed
-  const onMapClick = React.useCallback((event) => {
-    putSpot("random", event.latLng.lat(), event.latLng.lng())
-      .then((spot) => {
-        setSpots((current) => [
-          ...current, spot
-        ])
-      });
-  }, []);
+
+  const onMapClick = async (event) => {
+    if (!createNewSpot.visible) {
+      await setTransferObject({
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng()
+      })
+      setCreateNewSpot({visible: true});
+    } else {
+      setCreateNewSpot({visible: false});
+    }
+  };
+
+  useEffect(() => {
+    console.log(transferObject);
+  }, [transferObject])
 
   // useRef() opposite of useState (keeps state without re-rendering)
   // re-center map to new position + prevent re-render
@@ -95,7 +110,6 @@ export default function GoogleMaps() {
       <Search panTo={panTo}/>
       <Locate panTo={panTo}/>
       <SpotSideBar/>
-      {/*<SetSpotCategoryCard/>*/}
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -106,10 +120,18 @@ export default function GoogleMaps() {
         onLoad={onMapLoad}
       >
 
-        // creates all spots
+        {/* creates all spots */}
         {spots.map(spot => (
           <SpotMarker key={spot.id} spot={spot} setSelected={setSelected}/>
         ))}
+
+        {/* renders Create New Spot window depending on value of visible */}
+        {createNewSpot.visible ?
+          <SetSpotCategoryCard
+            transferObject={transferObject}
+            setSpots={setSpots}
+            setCreateNewSpot={setCreateNewSpot}
+          /> : null}
 
         {/* info-window function for selected spot */}
         {selected ? (
