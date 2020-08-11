@@ -38,9 +38,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   textfield: {
-    margin: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     width: "300px",
-    color: "white",
     height: "40px",
   },
   button: {
@@ -54,18 +53,50 @@ export default function CreateAccount() {
   return (
     <>
       <Box className={classes.container}>
-        <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center"
-             className={classes.layerInBetweenBox}>
-          <Box display="flex" flexDirection="column" justifyContent="flex-start" alignItems="center"
-               className={classes.wrapperBox}>
-            <Typography className={classes.typo}>Create New Account</Typography>
-            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
-                 className={classes.textfieldBox}>
-              <TextField rid="standard-basic" label="Username" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Password" type="password" className={classes.textfield}/>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-end"
+          alignItems="center"
+          className={classes.layerInBetweenBox}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="flex-start"
+            alignItems="center"
+            className={classes.wrapperBox}
+          >
+            <Typography
+              className={classes.typo}
+            >
+              Create New Account
+            </Typography>
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              className={classes.textfieldBox}
+            >
+              <TextField
+                rid="standard-basic"
+                label="Username"
+                className={classes.textfield}
+              />
+              <TextField
+                rid="standard-basic"
+                label="Password"
+                type="password"
+                className={classes.textfield}
+              />
             </Box>
             <Link to="/login">
-              <Button variant="contained" color="secondary" className={classes.button}>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+              >
                 CONFIRM
               </Button>
             </Link>
