@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     height: "100%",
     width: "100%",
-    backgroundImage: "url(/images/LoginBGDouble.png)",
+    backgroundImage: "url(/images/landingPageImage2.png)",
     backgroundPosition: "center", /* Center the image */
     backgroundRepeat: "no-repeat", /* Do not repeat the image */
     backgroundSize: "cover", /* Resize the background image to cover the entire container */
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
   },
   layerInBetweenBox: {
-    backgroundColor: "rgba(91,48,48,0.3)",
+    backgroundColor: "rgba(91,48,48,0.1)",
     height: "100%",
     width: "100%",
   },
@@ -35,19 +35,19 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
   },
   button: {
-    margin: theme.spacing(4),
+    margin: theme.spacing(3),
     width: "100px",
 
   },
   button2: {
     fontSize: "18px",
-    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     color: "white",
     backgroundColor: "rgba(255,255,255,0)",
   },
 }));
 
-export default function UserLoginSF() {
+export default function UserLogin() {
   const classes = useStyles();
 
   return (
@@ -58,6 +58,18 @@ export default function UserLoginSF() {
              className={classes.layerInBetweenBox}>
           <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
                className={classes.wrapperBox}>
+            <img
+              src="/svg/curiocityLogo.svg"
+              alt="logo"
+              style={{
+                position: "absolute",
+                top: 60,
+                left: "13%",
+                height: 80,
+                width: "auto",
+                zIndex: 50,
+              }}
+            />
             <TextField
               error
               id="outlined-error"
@@ -65,6 +77,7 @@ export default function UserLoginSF() {
               defaultValue=""
               variant="outlined"
               className={classes.textPrimary}
+              style={{}}
             />
             <TextField
               error

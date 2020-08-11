@@ -61,14 +61,8 @@ export default function CreateAccount() {
             <Typography className={classes.typo}>Create New Account</Typography>
             <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
                  className={classes.textfieldBox}>
-              <TextField rid="standard-basic" label="First Name" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Last Name" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="E-Mail Address" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Gender" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Year of Birth" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Country of Residence" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Postal Code" className={classes.textfield}/>
-              <TextField rid="standard-basic" label="Password" className={classes.textfield}/>
+              <TextField rid="standard-basic" label="Username" className={classes.textfield}/>
+              <TextField rid="standard-basic" label="Password" type="password" className={classes.textfield}/>
             </Box>
             <Link to="/login">
               <Button variant="contained" color="secondary" className={classes.button}>
