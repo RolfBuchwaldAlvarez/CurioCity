@@ -1,0 +1,20 @@
+name: Deploy project plan to heroku
+
+# CurioCitY change to master branch
+on: push
+
+jobs:
+  build-frontend:
+    name: build project plan react frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: run npm install and build
+        run: |
+          cd curiocityfrontend
+          npm install
+          npm run build
