@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="25px" viewBox="0 0 26 25" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Grey Spot Copy</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.6"
+       stroke-opacity="0.8">
+        <g id="Artboard" transform="translate(-1116.000000, -326.000000)" fill="#A2AEAE" stroke="#616567">
+            <g id="Group-7" transform="translate(604.000000, 175.000000)">
+                <g id="Group-Copy" transform="translate(455.000000, 143.000000)">
+                    <g id="greyRandomSpot" transform="translate(7.000000, 8.000000)">
+                        <ellipse id="Grey-Spot-Copy" cx="63" cy="12.5" rx="12.5" ry="12"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

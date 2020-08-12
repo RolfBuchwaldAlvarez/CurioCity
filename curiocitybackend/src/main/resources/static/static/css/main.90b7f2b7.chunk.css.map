@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "sources": [
+    "index.css",
+    "googleMaps.css"
+  ],
+  "names": [],
+  "mappings": "AAAA,UACE,QAAS,CACT,SAAU,CACV,YAAa,CACb,WAAY,CACZ,mJAEU,CACV,kCAAmC,CACnC,iCACF,CAEA,MACE,WACF,CAEA,KACE,yEAEF,CCnBA,QAEE,QAAS,CACT,QAAS,CACT,0BAA2B,CAC3B,eAEF,CAEA,gBARE,iBAAkB,CAKlB,UAUF,CAPA,QAEE,QAAS,CACT,QAAS,CACT,eAAgB,CAChB,WAEF,CAEA,YACE,cACF",
+  "file": "main.90b7f2b7.chunk.css",
+  "sourcesContent": [
+    "html, body {\n  margin: 0;\n  padding: 0;\n  height: 100vh;\n  width: 100vw;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n  sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n#root {\n  height: 100%;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n",
+    ".search {\n  position: absolute;\n  top: 5rem;\n  left: 50%;\n  transform: translateX(-50%);\n  max-width: 400px;\n  z-index: 10;\n}\n\n.locate {\n  position: absolute;\n  top: 75px;\n  right: 2%;\n  background: none;\n  border: none;\n  z-index: 10;\n}\n\n.locate img {\n  cursor: pointer;\n}"
+  ]
+}
