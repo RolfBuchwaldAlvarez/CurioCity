@@ -1,10 +1,10 @@
-name: Deploy CurioCitY to Heroku
+name: Deploy CurioCitY app to Heroku
 
 on: push
 
 jobs:
   build-frontend:
-    name: build curiocity react frontend
+    name: build react frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,8 +45,3 @@ jobs:
         with:
           name: curiocity.jar
           path: curiocitybackend/target/curiocity.jar
-
-
-
-
-
