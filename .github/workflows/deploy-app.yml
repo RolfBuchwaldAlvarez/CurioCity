@@ -1,6 +1,8 @@
 name: Deploy CurioCitY app to Heroku
 
-on: push
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build-frontend:
