@@ -1,11 +1,10 @@
-name: Deploy project plan to heroku
+name: Deploy CurioCitY to Heroku
 
-# CurioCitY change to master branch
 on: push
 
 jobs:
   build-frontend:
-    name: build project plan react frontend
+    name: build curiocity react frontend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,6 +26,7 @@ jobs:
   build-backend:
     name: build jar file
     runs-on: ubuntu-latest
+    needs: build-frontend
     steps:
       - uses: actions/checkout@v2
       - name: download frontend build artifacts
@@ -40,7 +40,7 @@ jobs:
           java-version: 14
       - name: Build with Maven
         run: mvn -B package --file ./curiocitybackend/pom.xml
-      - name: upload curiocity.jar
+      - name: upload curiocity.jar file
         uses: actions/upload-artifact@v2
         with:
           name: curiocity.jar
