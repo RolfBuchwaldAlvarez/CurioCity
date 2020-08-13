@@ -26,7 +26,6 @@ function PasswordLoginTextfield(props) {
         className: classes.input
       }}
       error
-      id="outlined-error"
       rid="standard-basic"
       label="User ID"
       defaultValue=""
