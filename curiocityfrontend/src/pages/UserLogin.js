@@ -29,23 +29,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "50%",
   },
-  textPrimary: {
-    width: "300px",
-    margin: theme.spacing(2),
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: "4px",
-  },
-  button: {
-    margin: theme.spacing(3),
-    width: "100px",
-
-  },
-  button2: {
-    fontSize: "18px",
-    marginBottom: theme.spacing(2),
-    color: "white",
-    backgroundColor: "rgba(255,255,255,0)",
-  },
 }));
 
 export default function UserLogin() {
@@ -74,12 +57,30 @@ export default function UserLogin() {
             <PasswordLoginTextfield/>
             <UserIDTextfield/>
             <Link to="/main">
-              <Button variant="contained" color="secondary" className={classes.button}>
+              <Button
+                variant="contained"
+                color="secondary"
+                style={{
+                  position: "absolute",
+                  bottom: 90,
+                  left: "37%",
+                  width: 100,
+                }}
+              >
                 LOGIN
               </Button>
             </Link>
             <Link to="/createAccount">
-              <Button className={classes.button2}>
+              <Button
+                style={{
+                  position: "absolute",
+                  bottom: 25,
+                  left: "25%",
+                  color: "white",
+                  background: "none",
+                  fontSize: 15,
+                }}
+              >
                 Create New Account
               </Button>
             </Link>

@@ -22,17 +22,19 @@ function UsernameTextfield(props) {
   const {classes} = props;
 
   return (
-    <TextField
-      className={classes.root}
-      InputLabelProps={{
-        className: classes.label
-      }}
-      InputProps={{
-        className: classes.input
-      }}
-      rid="standard-basic"
-      label="Username"
-    />
+    <div>
+      <TextField
+        className={classes.root}
+        InputLabelProps={{
+          className: classes.label
+        }}
+        InputProps={{
+          className: classes.input
+        }}
+        rid="standard-basic"
+        label="Username"
+      />
+    </div>
   );
 }
 

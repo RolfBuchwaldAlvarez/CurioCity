@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import UserLogin from "./pages/UserLogin";
-import CreateAccount from "./pages/CreateAccount";
+import CreateNewAccount from "./pages/CreateNewAccount";
 import MainPage from "./pages/MainPage";
 import GoogleMaps from "./components/googleMaps/GoogleMaps";
 import SetSpotCategoryCard from "./components/googleMaps/components/SetSpotCategoryCard";
@@ -19,7 +19,7 @@ function App() {
         <SpotSideBar/>
       </Route>
       <Route exact path={"/createAccount"}>
-          <CreateAccount/>
+        <CreateNewAccount/>
       </Route>
       <Route exact path={"/login"}>
         <UserLogin/>

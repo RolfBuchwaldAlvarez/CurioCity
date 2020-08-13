@@ -22,18 +22,20 @@ function PasswordTextfield(props) {
   const {classes} = props;
 
   return (
-    <TextField
-      className={classes.root}
-      InputLabelProps={{
-        className: classes.label
-      }}
-      InputProps={{
-        className: classes.input
-      }}
-      rid="standard-basic"
-      label="Password"
-      type="password"
-    />
+    <div>
+      <TextField
+        className={classes.root}
+        InputLabelProps={{
+          className: classes.label
+        }}
+        InputProps={{
+          className: classes.input
+        }}
+        rid="standard-basic"
+        label="Password"
+        type="password"
+      />
+    </div>
   );
 }
 
