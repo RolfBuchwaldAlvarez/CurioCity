@@ -40,7 +40,7 @@ jobs:
           java-version: 14
       - name: Build with Maven
         run: mvn -B package --file ./curiocitybackend/pom.xml
-      - name: upload curiocity.jar file
+      - name: upload curiocity.jar
         uses: actions/upload-artifact@v2
         with:
           name: curiocity.jar
