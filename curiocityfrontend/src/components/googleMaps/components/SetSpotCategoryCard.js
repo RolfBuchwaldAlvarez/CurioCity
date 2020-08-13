@@ -220,7 +220,6 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
               </label>
               <br/>
               <textarea
-                cols
                 name="description"
                 placeholder="Write here..."
                 onChange={handleDescriptionChange}
