@@ -58,7 +58,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: curiocity.jar
-          path: curiocitybackend/target/curiocity.jar
+          path: curiocitybackend/target
       - name: login to heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
