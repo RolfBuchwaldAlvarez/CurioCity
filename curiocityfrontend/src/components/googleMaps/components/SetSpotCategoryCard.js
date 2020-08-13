@@ -206,8 +206,8 @@ export default function SetSpotCategoryCard({transferObject, setSpots, setCreate
               }}
             />
           </div>
-g
-          {/* description */}
+
+      {/* description */}
           <div>
             <form>
               <label
