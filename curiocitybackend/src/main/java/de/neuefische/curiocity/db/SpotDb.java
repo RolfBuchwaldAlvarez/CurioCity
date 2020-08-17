@@ -11,11 +11,11 @@ import java.util.UUID;
 @Repository
 public class SpotDb {
   public List<Spot> spotList = new ArrayList<>(List.of(
-      new Spot("1", 50.936400, 6.947340, "bar", "Ichigo's Sakura Highballs", "Crowded place with colorful drinks. Waiters are dressed up like cosplay actors." /*, "Famous public square in Cologne, Germany", "160170.26499999338"*/),
-      new Spot("2", 50.947460, 6.959180, "restaurant", "Naruto's Ramen & Teishoku", "Awesome looking Japanese style place with sexy food selection. Can't wait to try the super yummy looking homemade ramen soups." /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("3", 50.947420, 6.950160, "random", "One Piece Public Square", "Cool looking public square with BBQ areas and lots of arty stuff all over the place."/*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("4", 50.947440, 6.952140, "concert", "AKB48", "Akihabara 48 coming from Tokyo to Cologne LANXESS Arena for a concert in January 2021. Need to get tickets!" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
-      new Spot("5", 50.936600, 6.954120, "store", "Tanjirou's Manga Book Shop", "Seems like they're having quite a bunch of original Japanese mangas on stock." /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
+      new Spot("1", 50.931703598464416, 6.945654865653639, "bar", "Ichigo's Sakura Highballs", "Crowded place with colorful drinks. Waiters are dressed up like cosplay actors." /*, "Famous public square in Cologne, Germany", "160170.26499999338"*/),
+      new Spot("2", 50.9282459667188, 6.948878468670161, "restaurant", "Naruto's Ramen & Teishoku", "Awesome looking Japanese style place with sexy food selection. Can't wait to try the super yummy looking homemade ramen soups." /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("3", 50.93138721286788, 6.948732405506957, "random", "Kyoto Square", "Cool looking public square with BBQ areas and lots of arty stuff all over the place."/*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("4", 50.925302901958354, 6.961510016974253, "concert", "AKB48", "Akihabara 48 coming from Tokyo to Cologne for a small boutique concert in January 2021. Tickets on Sale from November 2020. Need to get tickets!" /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/),
+      new Spot("5", 50.92458994653566, 6.958419380082241, "store", "Tanjirou's Manga Book Shop", "Seems like they're having quite a bunch of original Japanese mangas on stock." /*, "Famous cathedral in Cologn, Germany", "396984.1299999971"*/)
   ));
 
   public List<Spot> getSpots() {

@@ -43,12 +43,9 @@ const useStyles = makeStyles((theme) => ({
     width: "300px",
     height: "40px",
   },
-  button: {
-    marginTop: theme.spacing(4),
-  }
 }));
 
-export default function CreateAccount() {
+export default function CreateNewAccount() {
   const classes = useStyles();
 
   return (
@@ -99,7 +96,11 @@ export default function CreateAccount() {
               <Button
                 variant="contained"
                 color="secondary"
-                className={classes.button}
+                style={{
+                  position: "absolute",
+                  left: "38%",
+                  bottom: 35,
+                }}
               >
                 CONFIRM
               </Button>

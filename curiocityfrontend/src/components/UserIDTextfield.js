@@ -6,8 +6,7 @@ import {TextField} from "@material-ui/core";
 const styles = {
   root: {
     backgroundColor: "rgba(255,255,255,0.1)",
-    width: "300px",
-    /*height: "40px",*/
+    width: 300,
     margin: 16,
     borderRadius: 4,
   },
@@ -20,18 +19,24 @@ function UserIDTextfield(props) {
   const {classes} = props;
 
   return (
-    <TextField
-      className={classes.root}
-      InputProps={{
-        className: classes.input
+    <div
+      style={{
+        position: "absolute",
+        top: 430,
       }}
-      error
-      id="outlined-error"
-      label="Password"
-      type="password"
-      defaultValue=""
-      variant="outlined"
-    />
+    >
+      <TextField
+        className={classes.root}
+        InputProps={{
+          className: classes.input
+        }}
+        error
+        label="Password"
+        type="password"
+        defaultValue=""
+        variant="outlined"
+      />
+    </div>
   );
 }
 
